@@ -1,5 +1,7 @@
 cd /d F:\Work\FounderOS
 
+git pull origin main
+
 git add .
 
 git diff --cached --quiet
