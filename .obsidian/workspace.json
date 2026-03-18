@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "6. Logs/Errors.md.md",
+                "file": "00 - Home/Dashboard.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Errors.md"
+              "title": "Dashboard"
             }
           }
         ]
@@ -187,41 +187,41 @@
   },
   "active": "9b211d807c7e54a8",
   "lastOpenFiles": [
-    "1. Vision/Principles.md.md",
     "10 - Sync/Auto Update System.md",
-    "10 - Sync",
-    "09 - Templates/Product Build Plan Template.md",
-    "09 - Templates/Idea Note Template.md",
-    "09 - Templates",
     "08 - Prompts/System Context.md",
-    "08 - Prompts",
     "07 - Learnings/Agent Learnings.md",
-    "07 - Learnings",
+    "6. Logs/Errors.md.md",
     "06 - Logs/n8n/n8n Execution Log.md",
     "06 - Logs/Errors/Error Log.md",
-    "06 - Logs/n8n",
-    "06 - Logs/Errors",
-    "06 - Logs",
+    "05 - Memory/Context for AI Tools.md",
     "05 - Memory/Decisions/Decisions Log.md",
     "05 - Memory/Conversations/Conversation Log.md",
-    "05 - Memory/Decisions",
-    "05 - Memory/Conversations",
-    "05 - Memory/Context for AI Tools.md",
-    "05 - Memory",
     "04 - Skills/Skill Registry.md",
     "03 - Products/Saved Ideas.md",
     "03 - Products/Idea Pipeline.md",
     "02 - Workflows/Workflow Index.md",
     "02 - Workflows/Product Builder.md",
-    "02 - Workflows/Founder OS Agent.md",
     "02 - Workflows/Ideas Fetcher.md",
+    "02 - Workflows/Founder OS Agent.md",
     "02 - Workflows/Builder - Web App.md",
     "01 - Architecture/VM Status.md",
     "01 - Architecture/Known Issues.md",
     "01 - Architecture/Architecture Overview.md",
     "00 - Home/Vision.md",
     "00 - Home/Dashboard.md",
-    "6. Logs/Errors.md.md",
+    "1. Vision/Principles.md.md",
+    "10 - Sync",
+    "09 - Templates/Product Build Plan Template.md",
+    "09 - Templates/Idea Note Template.md",
+    "09 - Templates",
+    "08 - Prompts",
+    "07 - Learnings",
+    "06 - Logs/n8n",
+    "06 - Logs/Errors",
+    "06 - Logs",
+    "05 - Memory/Decisions",
+    "05 - Memory/Conversations",
+    "05 - Memory",
     "4. Prompts/System Context.md.md"
   ]
 }
