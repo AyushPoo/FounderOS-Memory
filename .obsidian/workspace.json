@@ -187,6 +187,8 @@
   },
   "active": "9b211d807c7e54a8",
   "lastOpenFiles": [
+    "06 - Logs/deployments/Website Deploys.md",
+    "06 - Logs/deployments",
     "10 - Sync/Auto Update System.md",
     "08 - Prompts/System Context.md",
     "07 - Learnings/Agent Learnings.md",
@@ -220,8 +222,6 @@
     "06 - Logs/Errors",
     "06 - Logs",
     "05 - Memory/Decisions",
-    "05 - Memory/Conversations",
-    "05 - Memory",
-    "4. Prompts/System Context.md.md"
+    "05 - Memory/Conversations"
   ]
 }
