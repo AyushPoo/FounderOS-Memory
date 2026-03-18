@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "6. Logs/Errors.md.md",
+                "file": "1. Vision/Principles.md.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Errors.md"
+              "title": "Principles.md"
             }
           }
         ]
@@ -187,6 +187,7 @@
   },
   "active": "9b211d807c7e54a8",
   "lastOpenFiles": [
+    "6. Logs/Errors.md.md",
     "4. Prompts/System Context.md.md",
     "autosync.bat",
     "auto.txt",
@@ -197,7 +198,6 @@
     "1. Vision/Vision.md.md",
     "1. Vision/Principles.md.md",
     "7. Learnings/Agent Learnings.md.md",
-    "6. Logs/Errors.md.md",
     "3. Workflows/Telegram Control.md.md",
     "3. Workflows/Idea Scraper.md.md",
     "Welcome.md",
