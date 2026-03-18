@@ -1,0 +1,210 @@
+{
+  "main": {
+    "id": "cfc3a7b761f74a39",
+    "type": "split",
+    "children": [
+      {
+        "id": "79265d9853947725",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9b211d807c7e54a8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2. Architecture/Memory System.md.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Memory System.md"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a5338b776c373025",
+    "type": "split",
+    "children": [
+      {
+        "id": "4df9dd8907b3cab9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9e685b931035ecb2",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "93f0bec758ebf2d2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "cfc0cff2c34fba07",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "21d706467c6c05e7",
+    "type": "split",
+    "children": [
+      {
+        "id": "94a096eccf07f8d9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bf827c48af328e89",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Welcome.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Welcome"
+            }
+          },
+          {
+            "id": "01a5714eda07a5d0",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Welcome.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Welcome"
+            }
+          },
+          {
+            "id": "74e8ca4572b797a4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "261442224b9d1367",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "c3c271680abc7930",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Welcome.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Welcome"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "9b211d807c7e54a8",
+  "lastOpenFiles": [
+    "4. Prompts/System Context.md.md",
+    "1. Vision/Principles.md.md",
+    "1. Vision/Vision.md.md",
+    "7. Learnings/Agent Learnings.md.md",
+    "6. Logs/Errors.md.md",
+    "3. Workflows/Telegram Control.md.md",
+    "3. Workflows/Idea Scraper.md.md",
+    "2. Architecture/Memory System.md.md",
+    "2. Architecture/Target Architecture.md.md",
+    "2. Architecture/Current Setup.md.md",
+    "Welcome.md",
+    "5. Memory/Conversations.md",
+    "5. Memory/Tasks.md",
+    "5. Memory/Ideas.md",
+    "7. Learnings",
+    "6. Logs",
+    "5. Memory",
+    "4. Prompts",
+    "3. Workflows",
+    "2. Architecture",
+    "1. Vision"
+  ]
+}
