@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "00 - Home/Dashboard.md",
+                "file": "01 - Architecture/Architecture Overview.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Dashboard"
+              "title": "Architecture Overview"
             }
           }
         ]
@@ -187,6 +187,10 @@
   },
   "active": "9b211d807c7e54a8",
   "lastOpenFiles": [
+    "01 - Architecture/Known Issues.md",
+    "01 - Architecture/Architecture Overview.md",
+    "05 - Memory/Conversations/Conversation Log.md",
+    "00 - Home/Dashboard.md",
     "06 - Logs/deployments/Website Deploys.md",
     "06 - Logs/deployments",
     "10 - Sync/Auto Update System.md",
@@ -197,7 +201,6 @@
     "06 - Logs/Errors/Error Log.md",
     "05 - Memory/Context for AI Tools.md",
     "05 - Memory/Decisions/Decisions Log.md",
-    "05 - Memory/Conversations/Conversation Log.md",
     "04 - Skills/Skill Registry.md",
     "03 - Products/Saved Ideas.md",
     "03 - Products/Idea Pipeline.md",
@@ -207,10 +210,7 @@
     "02 - Workflows/Founder OS Agent.md",
     "02 - Workflows/Builder - Web App.md",
     "01 - Architecture/VM Status.md",
-    "01 - Architecture/Known Issues.md",
-    "01 - Architecture/Architecture Overview.md",
     "00 - Home/Vision.md",
-    "00 - Home/Dashboard.md",
     "1. Vision/Principles.md.md",
     "10 - Sync",
     "09 - Templates/Product Build Plan Template.md",
