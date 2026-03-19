@@ -46,4 +46,55 @@ Key summaries from AI tool sessions. Prevents repeating context and tracks what 
 
 ---
 
+## 2026-03-19 (AM) — OpenClaw (Claude) — Obsidian Updater + GitHub Action
+
+**What was discussed:**
+- Building the n8n Obsidian Updater workflow
+- Wiring existing workflows (Ideas Fetcher, Save Idea, Product Builder) to webhook
+- GitHub Action for website deploy logging
+
+**What was built:**
+- Obsidian Updater workflow (ID: Yg8BWmxKQuCHkn2k) — live and active
+  - Webhook: POST https://34.14.219.64.nip.io/webhook/update-obsidian
+  - GitHub PAT credential created in n8n (ID: XsVpsC29vOaYW9oc)
+- Wired Ideas Fetcher, Save Idea, Product Builder → webhook
+- GitHub Action `log-to-obsidian.yml` on AyushPoo/Founder-Systems (commit 93d29c5)
+  - Logs every push to main → `06 - Logs/deployments/Website Deploys.md`
+
+**Open items:**
+- Connection #3: BrowserOS → Obsidian
+- Connection #4: LLM Conversations → Obsidian
+- Fix VM disk full
+- Wire Product Builder to Telegram agent
+
+---
+
+## 2026-03-19 (PM) — OpenClaw (Claude) — BrowserOS + LLM Capture
+
+**What was discussed:**
+- How to capture browser sessions (BrowserOS + Chrome) to vault
+- How to log LLM conversations (ChatGPT, Arena, BrowserOS) to vault
+- Ayush confirmed VM disk issue is already resolved
+
+**What was built:**
+- `10 - Sync/BrowserOS Capture.md` — bookmarklet + instructions for saving pages to vault
+- `05 - Memory/Browser Captures.md` — destination file for browser saves
+- `10 - Sync/LLM Conversation Capture.md` — 4 methods for capturing AI sessions
+- Conversation Log updated (this entry)
+- Auto Update System updated to mark all 4 connections live
+
+**How capture works now:**
+- BrowserOS: Use the JS bookmarklet (see `10 - Sync/BrowserOS Capture.md`)
+- ChatGPT/Arena sessions: Tell OpenClaw "log this session: [summary]" — I push it to vault instantly
+- OpenClaw sessions: Auto-logged here
+- n8n workflows: Auto-logged via webhook
+
+**Open items:**
+- Optional: Add /log-session command to Telegram bot (n8n workflow edit)
+- Wire Product Builder to Telegram agent
+- Fix Builder - Web App broken config
+- Design deployment pipeline (code → GitHub → live)
+
+---
+
 _Future sessions will be summarized here automatically or manually._

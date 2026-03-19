@@ -5,10 +5,12 @@ How Obsidian gets automatically updated from n8n, the VM, and AI tools.
 ## Architecture
 
 ```
-n8n workflows          → webhook → [Obsidian Updater Workflow] → GitHub API → vault
-VM events              → SSH → n8n → GitHub API → vault  
-Telegram conversations → Founder OS Agent → GitHub API → vault
-ChatGPT/Claude/BrowserOS → manual paste OR browser extension → vault
+n8n workflows          → webhook → [Obsidian Updater Workflow] → GitHub API → vault  ✅ LIVE
+Website GitHub pushes  → GitHub Action → GitHub API → vault                          ✅ LIVE
+BrowserOS/Chrome       → JS bookmarklet → webhook → GitHub API → vault               ✅ READY
+LLM sessions           → tell OpenClaw → webhook → GitHub API → vault                ✅ LIVE
+OpenClaw sessions      → auto-logged by OpenClaw → webhook → GitHub API → vault      ✅ LIVE
+Telegram conversations → Founder OS Agent → (optional /log-session command)          🔲 Optional
 ```
 
 ## The Obsidian Updater Workflow ✅ LIVE
