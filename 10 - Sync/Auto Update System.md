@@ -11,52 +11,43 @@ Telegram conversations → Founder OS Agent → GitHub API → vault
 ChatGPT/Claude/BrowserOS → manual paste OR browser extension → vault
 ```
 
-## The Obsidian Updater Workflow (TO BUILD)
+## The Obsidian Updater Workflow ✅ LIVE
 
-A new n8n workflow that:
-1. Receives a POST webhook: `POST /webhook/update-obsidian`
-2. Body format:
+**Workflow ID:** Yg8BWmxKQuCHkn2k  
+**Webhook:** `POST https://34.14.219.64.nip.io/webhook/update-obsidian`  
+**Status:** Active (activated 2026-03-19)
+
+### Request Format
 ```json
 {
   "file": "06 - Logs/n8n/n8n Execution Log.md",
   "action": "append",
-  "content": "| 2026-03-18 10:30 | Ideas Fetcher | ✅ Success | Fetched 7 ideas |",
+  "content": "| 2026-03-19 13:30 | Ideas Fetcher | ✅ Success | Fetched 7 ideas |",
   "section": "## Recent Executions"
 }
 ```
-3. Fetches current file from GitHub API
-4. Appends/updates content
-5. Commits back to GitHub
 
-### Webhook Actions
+### Supported Actions
 - `append` — add to end of file or below a section header
-- `update_table` — add a row to a markdown table
+- `update_table` — add a row to a markdown table (alias for append)
 - `overwrite` — replace entire file content
 - `create` — create a new file
 
-## What Should Auto-Update
+## Connection Status
 
-### When Ideas Are Fetched
-- Append to `03 - Products/Saved Ideas.md` when "save X" is triggered
-- Log to `06 - Logs/n8n/n8n Execution Log.md`
-
-### When Product Builder Runs
-- Create `03 - Products/In Progress/[product-name].md` with the full build plan
-- Log to `06 - Logs/n8n/n8n Execution Log.md`
-
-### When a Product Is Built
-- Move from In Progress to `03 - Products/Shipped/[product-name].md`
-- Add to Dashboard status
-
-### When Errors Occur
-- Append to `06 - Logs/Errors/Error Log.md`
-
-### When VM Health Changes
-- Update `01 - Architecture/VM Status.md`
+| Connection | Status | Notes |
+|------------|--------|-------|
+| n8n → Obsidian | ✅ Live | Obsidian Updater workflow active |
+| Ideas Fetcher → Obsidian | ✅ Wired | Logs to n8n Execution Log |
+| Save Idea → Obsidian | ✅ Wired | Logs to Saved Ideas.md |
+| Product Builder → Obsidian | ✅ Wired | Logs build events |
+| Antigravity/Website → Obsidian | 🔲 Not built | GitHub Action needed |
+| BrowserOS → Obsidian | 🔲 Not built | Bookmarklet/paste flow |
+| LLM Conversations → Obsidian | 🔲 Not built | Manual paste via OpenClaw |
 
 ## GitHub API Approach
 
-Use GitHub Contents API — no need for git CLI:
+Uses GitHub Contents API — no git CLI needed:
 
 ```
 GET /repos/AyushPoo/FounderOS-Memory/contents/{path}
@@ -70,15 +61,7 @@ PUT /repos/AyushPoo/FounderOS-Memory/contents/{path}
   }
 ```
 
-**GitHub Token needed:** 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
-
-## Status
-- [ ] Build Obsidian Updater Workflow in n8n
-- [ ] Connect Ideas Fetcher → update vault on new batch
-- [ ] Connect Save Idea → log to Saved Ideas
-- [ ] Connect Product Builder → log build plans
-- [ ] Connect Builder - Web App → log completions/errors
-- [ ] Set up Windows autosync (autosync.bat already exists for laptop → GitHub)
+**Credential:** GitHub PAT stored in n8n as `GitHub PAT - FounderOS Memory` (id: XsVpsC29vOaYW9oc)
 
 ## Laptop → GitHub Sync (Already Working)
 The `autosync.bat` file in your vault root:
@@ -88,5 +71,4 @@ git add .
 git commit -m "vault auto update %date% %time%"
 git push origin main
 ```
-Run this on a schedule via Windows Task Scheduler to push your local changes.
-n8n pushes go the other way: n8n → GitHub API → pulled by Obsidian Git plugin.
+n8n pushes go the other direction: n8n → GitHub API → pulled by Obsidian Git plugin.
