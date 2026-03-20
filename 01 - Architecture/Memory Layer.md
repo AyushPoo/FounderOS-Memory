@@ -1,24 +1,26 @@
 # 🧠 Memory Layer — Architecture & Status
 
-> Last updated: 2026-03-20
+> Last updated: 2026-03-20 — v2.0 LIVE ✅
 
 ## Overview
 
-The memory system has been fully migrated away from Mem0 (hosted) to a **custom self-hosted stack** using Qdrant + FastAPI + sentence-transformers. This gives full control over storage, retrieval logic, chunking, and deduplication.
+Custom self-hosted memory stack. Fully operational as of 2026-03-20.
 
 ---
 
 ## Stack
 
-| Component | Tech | Location | Purpose |
-|-----------|------|----------|---------|
-| Vector DB | Qdrant | `localhost:6333` | Stores embeddings |
-| Memory Server | FastAPI (`custom_memory.py`) | `localhost:8000` | API layer |
-| Embedding Model | `all-MiniLM-L6-v2` (sentence-transformers) | In-process | 384-dim vectors |
-| Bulk Indexer | `obsidian_sync.py` | VM home dir | One-shot GitHub → Qdrant import |
+| Component | Tech | Location | Status |
+|-----------|------|----------|--------|
+| Vector DB | Qdrant | `localhost:6333` | ✅ Running |
+| Memory Server | FastAPI `custom_memory.py` v2.0 | `localhost:8000` | ✅ Running (PM2: custom-memory) |
+| Embedding Model | `all-MiniLM-L6-v2` | In-process | ✅ 384-dim Cosine |
+| LLM | Gemini 2.5 Flash | Google API | ✅ Working |
+| Bulk Indexer | `obsidian_sync.py` | VM home dir | One-shot, run manually |
 
-**Legacy files (unused):**
-- `mem0_server.py` — old Mem0-based server, no longer in use
+**Gemini API key notes:**
+- Key has IP restriction — both IPv4 (`34.14.219.64`) and IPv6 (`fda3:e722:ac3:10:57:b85c:a62:20b1`) must be allowed
+- Use model: `gemini-2.5-flash` (1.5-flash, 2.0-flash, 2.0-flash-lite all deprecated for new users)
 
 ---
 
@@ -26,52 +28,30 @@ The memory system has been fully migrated away from Mem0 (hosted) to a **custom 
 
 | Collection | Points | Notes |
 |------------|--------|-------|
-| `founder_memory` | 32 | ✅ Active — all Obsidian notes indexed |
-| `mem0` | 0 | Empty, legacy |
-| `mem0migrations` | — | Legacy |
+| `founder_memory` | 32+ | ✅ Active |
+| `mem0` | 0 | Legacy, unused |
+| `mem0migrations` | — | Legacy, unused |
 
 ---
 
-## custom_memory.py — Current Server
+## API Endpoints (v2.0)
 
-**Running on port 8000 via PM2**
-
-### Endpoints
-
-| Endpoint | Method | Input | Purpose |
-|----------|--------|-------|---------|
-| `/` | GET | — | Health check |
-| `/add` | POST | `{messages, user_id}` | Adds text to in-memory store (NOT Qdrant) ⚠️ |
-| `/search` | POST | `{query, user_id}` | Searches memory + Qdrant |
-| `/upsert` | POST | `{file_path, content}` | Upserts a file into Qdrant by hash ID |
-
-### /add — Known Bug
-`/add` stores to a **local Python list** — NOT Qdrant.
-- Data is lost on server restart
-- GitHub Sync workflow currently calls `/add` — this data is not persisted to Qdrant
-
-**Fix needed:** Route `/add` through Qdrant upsert.
-
-### /search — Known Bug
-Returns mixed types — empty objects for Qdrant results because of a key mismatch:
-- `obsidian_sync.py` stores payload as `{text, source}`
-- `custom_memory.py` reads `payload.get("content")` and `payload.get("file")` — wrong keys
-
-**Fix needed:** Change to read `payload.get("text")` and `payload.get("source")`.
-
-### /upsert — Correct but unused
-Only endpoint that correctly writes to Qdrant. Nothing calls it yet.
+| Endpoint | Method | Input | Output | Status |
+|----------|--------|-------|--------|--------|
+| `/` | GET | — | `{status, version}` | ✅ |
+| `/add` | POST | `{messages, user_id}` | Chunks + upserts to Qdrant | ✅ Fixed |
+| `/upsert` | POST | `{file_path, content}` | Chunks + upserts by stable ID | ✅ |
+| `/search` | POST | `{query, user_id}` | `{results: [{text, source, score}]}` | ✅ Fixed |
+| `/query` | POST | `{query, top_k}` | `{results, count}` | ✅ New |
+| `/agent` | POST | `{input, user_id}` | `{response, memory_used, sources}` | ✅ New |
 
 ---
 
-## obsidian_sync.py — Bulk Indexer
+## Chunking & Deduplication
 
-One-shot script: walks GitHub repo, downloads all .md files, embeds full content, stores in Qdrant.
-
-**Known issues:**
-- No chunking — full file per vector (degrades quality for large files)
-- No deduplication — re-running calls `recreate_collection` (wipes everything)
-- IDs are sequential integers — unstable across re-runs
+- Files split into ~600 token chunks (2400 chars) with 240 char overlap
+- Each chunk ID = `md5(file_path + "::chunk_" + index)` — stable across re-runs
+- Same file pushed again = upsert in place, no duplicates
 
 ---
 
@@ -79,42 +59,39 @@ One-shot script: walks GitHub repo, downloads all .md files, embeds full content
 
 ```
 GitHub push
-    → GitHub Sync (n8n)
-    → POST /add  ← goes to memory_store (lost on restart)
-    (nothing reaches Qdrant from live pushes)
+    → GitHub Sync (n8n workflow 3HdXFHlJ6CI1iiPj)
+    → fetch raw .md content
+    → Build Payload (file_path + content)
+    → POST /upsert → chunked → Qdrant ✅
 
 obsidian_sync.py (manual, one-shot)
-    → Qdrant founder_memory (32 notes) ← real data lives here
+    → full vault → Qdrant (32 notes, no chunking — legacy)
 ```
 
 ---
 
-## What Needs to Be Built
+## /agent — FounderOS Brain
 
-### Priority 1 — Fix /search (30 min)
-Change `payload.get("content")` → `payload.get("text")`
-Change `payload.get("file")` → `payload.get("source")`
+```
+User query
+    → embed query → Qdrant search (top 5 chunks)
+    → build context from results
+    → Gemini 2.5 Flash prompt
+    → structured response: Insight / Actions / Risks
+    → store interaction back to Qdrant
+```
 
-### Priority 2 — Fix /add persistence (1 hr)
-Route to Qdrant upsert. Use `md5(source + chunk_index)` as stable point ID.
+**Test result (2026-03-20):**
+Query: "What is the current status of the product builder workflow?"
+→ memory_used: 5 chunks from Workflow Index, Product Builder, Dashboard, Idea Pipeline
+→ Response accurate, referenced correct broken nodes and missing connections
 
-### Priority 3 — Chunking (2 hr)
-Split .md files into 500–800 token chunks before embedding.
-Metadata per chunk: `{source, chunk_id, chunk_index, total_chunks}`.
-
-### Priority 4 — Deduplication (1 hr)
-Deterministic IDs per chunk. Delete old chunks before re-insert on update.
-
-### Priority 5 — /query endpoint (1 hr)
-Clean retrieval: `{query, top_k}` → `[{text, source, score}]`
-
-### Priority 6 — /agent endpoint (2–3 hr)
-User query → retrieve context → Gemini Flash → structured output → Telegram.
+**Next:** Wire /agent to Telegram as `/ask` command entry point
 
 ---
 
 ## GitHub Sync Workflow
 
-**ID:** `3HdXFHlJ6CI1iiPj` | Active
+**ID:** `3HdXFHlJ6CI1iiPj` | Active ✅
 
-Current pipeline calls `/add` — needs to be switched to `/upsert` with `{file_path, content}` to actually write to Qdrant.
+Pipeline calls `/upsert` with `{file_path, content}` — correct, chunked, deduplicated.
