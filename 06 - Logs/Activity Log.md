@@ -17,3 +17,5 @@ Cross-agent activity feed. Every agent writes here so all agents know what happe
 |-----------|-------|--------|----------|
 | 2026-03-21 06:20 | OpenClaw | system-upgrade | Added instant Mem0 sync to Obsidian Updater — no more stale search results |
 | 2026-03-21 06:20 | OpenClaw | system-upgrade | Created cross-agent Activity Log |
+| 2026-03-21 13:50 | OpenClaw | vault-sync | Full vault refresh: VM Status, Known Issues, Workflow Index all updated with current state |
+| 2026-03-21 13:50 | OpenClaw | auto-sync-created | Created + activated System State Sync workflow (9LHPPJK0lPoxIls1) — runs hourly, updates Workflow Index + Error Log in vault |
