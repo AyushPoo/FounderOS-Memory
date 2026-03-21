@@ -1,78 +1,109 @@
-# ⚡ Workflow Index
+# Workflow Index
+
+> Last updated: 2026-03-21 (auto-sync)
 
 All n8n workflows in the Founder Systems infrastructure.
 
 ## Active Workflows
 
 ### Founder OS Agent
-- **ID:** YSPgCuzj9JIHS7EG
-- **Status:** ✅ Active
-- **Trigger:** Telegram message
-- **LLM:** Google Gemini
-- **Purpose:** Main AI assistant — handles ideas, details, saves, workflow management
-- **Details:** [[Founder OS Agent]]
+- **ID:** TzpURLXbI6iOfLqU
+- **Status:** ACTIVE (but erroring — 20+ failures today)
+- **Trigger:** Telegram message (Bot 2)
+- **LLM:** Google Gemini 2.0 Flash
+- **Memory:** PostgreSQL chat memory (last 10 messages)
+- **Tools:** get_startup_ideas, get_idea_details, save_idea, ask_founder_memory, list_workflows, delete_workflows, build_product
+- **Purpose:** Main AI assistant — handles ideas, details, saves, builds, workflow management
 
 ### Ideas Fetcher
 - **ID:** pkTIpthafQ88wkAy
-- **Status:** ✅ Active
+- **Status:** ACTIVE
 - **Trigger:** Called by Founder OS Agent
-- **LLM:** Google Gemini (for ranking)
+- **LLM:** Google Gemini (ranking)
 - **Purpose:** Scrapes 9 sources, ranks top 7 ideas, stores to Google Sheets
-- **Details:** [[Ideas Fetcher]]
+- **Issue:** Wipes sheet before writing (loses history)
 
 ### Get Idea Details
 - **ID:** zgJBIZS3qUxEwwtd
-- **Status:** ✅ Active
+- **Status:** ACTIVE
 - **Trigger:** Called by Founder OS Agent with idea_name
-- **LLM:** Google Gemini
-- **Purpose:** Deep breakdown of a specific idea (what, problem, feasibility, MVP, monetization)
+- **Purpose:** Deep breakdown of a specific idea
 
-### Save Idea  
+### Save Idea
 - **ID:** rW7ohKD1BCAWUDtl
-- **Status:** ✅ Active
+- **Status:** ACTIVE
 - **Trigger:** Called by Founder OS Agent
-- **Purpose:** Saves bookmarked idea to Google Sheets "Saved Ideas" tab
-- **⚠️ Issue:** Only saves name, not full details/score
+- **Purpose:** Saves idea to Google Sheets
+- **Issue:** Only saves name, not full details/score
 
 ### Product Builder
 - **ID:** vo7WHaL6rq7yKRvm
-- **Status:** ⚠️ Active but incomplete
-- **Trigger:** Webhook POST to `/webhook/build-product`
+- **Status:** ACTIVE but incomplete
+- **Trigger:** Webhook POST
 - **LLM:** GPT 5.3 (Azure OpenAI)
-- **Purpose:** Takes idea → finds skills on VM → plans with GPT 5.3 → routes to builder
-- **Details:** [[Product Builder]]
+- **Purpose:** Idea to skills match to GPT plan to builder routing
+- **Issue:** If node uses AND logic (impossible), not connected to Agent
+
+### Build Product Bridge
+- **ID:** bOlABGUJiCiZ8I52
+- **Status:** ACTIVE
+- **Purpose:** Bridge between Agent build_product tool and Product Builder
+- **Updated:** 2026-03-21
+
+### Obsidian Updater
+- **ID:** Yg8BWmxKQuCHkn2k
+- **Status:** ACTIVE
+- **Trigger:** POST /webhook/update-obsidian
+- **Purpose:** Writes/appends content to Obsidian vault via GitHub API + syncs to Mem0
+- **Actions supported:** append, overwrite, create, update_table
+
+### Github Sync
+- **ID:** 3HdXFHlJ6CI1iiPj
+- **Status:** ACTIVE
+- **Trigger:** GitHub webhook (push to FounderOS-Memory)
+- **Purpose:** Syncs changed .md files from GitHub to Mem0 vector store
+
+### Mem0 Memories
+- **ID:** BkmdYttcq5lNsyfN
+- **Status:** ACTIVE
+- **Trigger:** POST /webhook/memory
+- **Purpose:** Receives memory text, searches Mem0, routes to correct Obsidian folder, saves to GitHub
+
+### System State Sync
+- **ID:** (to be created)
+- **Status:** PLANNED
+- **Purpose:** Hourly sync of VM status, workflow list, errors to vault
 
 ## Inactive Workflows
 
 ### Builder - Web App
 - **ID:** xiYFZhlToYLX9g4J
-- **Status:** ❌ Inactive (broken config)
-- **LLM:** GPT 5.3 (Azure OpenAI)
-- **Purpose:** Generate complete Next.js app code from a plan
-- **Details:** [[Builder - Web App]]
+- **Status:** INACTIVE (broken config)
+- **Note:** Replaced by OpenCode direct execution on Azure VM
 
 ### Build_workflow
 - **ID:** UenNZUVbklbHEyio
-- **Status:** ❌ Inactive
-- **Purpose:** Meta-tool to generate n8n workflows from description (not part of main pipeline)
+- **Status:** INACTIVE
+- **Purpose:** Meta-tool to generate n8n workflows from description
 
-### Activate Workflow Bot
-- **ID:** 2A2KKaHX45F7wiSr
-- **Status:** ❌ Inactive
-- **Purpose:** Telegram bot to approve/activate newly created workflows
+### My workflow
+- **ID:** zVHRqYSWy9WeprNX
+- **Status:** INACTIVE
+- **Purpose:** Unknown/test
 
-## Workflow Map
+## Pipeline Map
 ```
-Telegram → [Founder OS Agent] → [Ideas Fetcher] → Google Sheets
-                               → [Get Idea Details]
-                               → [Save Idea] → Google Sheets
-                               → (TODO: connect) [Product Builder]
-                                                      ↓
-                                                  SSH → VM Skills
-                                                      ↓
-                                                  GPT 5.3 Planner
-                                                      ↓
-                                                  Route by type
-                                                      ↓
-                                              [Builder - Web App] → (TODO: deploy)
+Telegram -> [Founder OS Agent]
+              -> get_startup_ideas -> [Ideas Fetcher] -> Google Sheets
+              -> get_idea_details  -> [Get Idea Details]
+              -> save_idea         -> [Save Idea] -> Google Sheets
+              -> build_product     -> [Build Product Bridge] -> [Product Builder]
+                                                               -> Azure VM (OpenCode)
+                                                               -> GitHub -> Website
+              -> ask_founder_memory -> Mem0 /agent
+              -> list/delete workflows -> n8n API
+
+GitHub push -> [Github Sync] -> Mem0
+POST /memory -> [Mem0 Memories] -> Obsidian + Mem0
+POST /update-obsidian -> [Obsidian Updater] -> GitHub + Mem0
 ```
