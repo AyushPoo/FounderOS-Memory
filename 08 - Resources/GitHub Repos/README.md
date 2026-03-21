@@ -26,3 +26,4 @@ Send the GitHub link to OpenClaw. It will:
 - #discovery — directories and indexes of other tools
 - #frontend — web/app UI building
 - #workflow — automation and agent workflow patterns
+| [[Anthropic-Financial-Services-Plugins]] | Finance / Reference | When building financial model products — reference DCF, 3-statement, comps skill patterns |
