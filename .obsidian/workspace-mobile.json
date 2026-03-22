@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "01 - Architecture/Architecture Overview.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Architecture Overview"
             }
           }
         ]
@@ -171,13 +171,13 @@
   },
   "active": "95c6f045a62115e3",
   "lastOpenFiles": [
-    "01 - Architecture/Memory Layer.md",
-    "README.md",
-    "sync.sh",
-    "01 - Architecture/Architecture Overview.md",
     "01 - Architecture/1773921287519 - To upgrade a FounderOS memory layer from storage to a thinki.md",
     "01 - Architecture/1773905033845 - User designed a 4layer Founder OS memory architecture Ca.md",
-    "00 - Home/Vision.md",
-    "00 - Home/Dashboard.md"
+    "00 - Home/Dashboard.md",
+    "01 - Architecture/Architecture Overview.md",
+    "README.md",
+    "01 - Architecture/Memory Layer.md",
+    "sync.sh",
+    "00 - Home/Vision.md"
   ]
 }
