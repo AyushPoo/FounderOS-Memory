@@ -54,3 +54,4 @@ Return ONLY the JSON. No ```json wrapper.
 RULE X — [ACTION]:
 If the user [trigger condition] → [exact action]. No exceptions.
 ```
+| 2026-03-22 11:10 | ❌ failure | Diagnose and fix the Product Builder workflow | The Product Builder workflow in n8n is not properly configured, and the build pipeline is broken due to missing dependencies and incorrect workflow settings. |
