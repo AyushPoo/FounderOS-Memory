@@ -4,30 +4,41 @@
 
 ## Shipped Products
 
-| Product | Type | Status | Location | Notes |
-|---------|------|--------|----------|-------|
-| Pomodoro Timer | Web App (HTML) | Shipped | Azure: products/pomodoro-timer/index.html | Static HTML, served on port 3000 |
-| Startup Cost Calculator | Web App (HTML) | Shipped | Azure: products/startup-cost-calculator/index.html | Static HTML, served on port 3000 |
+| Product | Type | Live URL | Status |
+|---------|------|----------|--------|
+| Pomodoro Timer | Web App (HTML) | https://foundersystems.in/tools/pomodoro-timer/ | Live |
+| Startup Cost Calculator | Web App (HTML) | https://foundersystems.in/tools/startup-cost-calculator/ | Live |
 
-## Pipeline Status
+## Deployment Pipeline (LIVE as of 2026-03-23)
 
 ```
-Idea (Google Sheets)
-    |
-    v
-Product Builder (n8n) -- GPT-5.3 plan
-    |
-    v
-OpenCode (Azure) -- code generation
-    |
-    v
-products/ on Azure VM  <-- HERE currently
-    |
-    x  (NO DEPLOYMENT PIPELINE YET)
-    |
-    v
-foundersystems.in  <-- TARGET
+OpenCode builds product
+      |
+      v
+~/products/<name>/index.html  (Azure VM)
+      |
+      v
+~/founder-os/builder/deploy.sh <name>
+      |
+      v
+GitHub: AyushPoo/Founder-Systems
+public/tools/<name>/index.html
+      |
+      v
+Vercel auto-deploy (~60 seconds)
+      |
+      v
+https://foundersystems.in/tools/<name>/
 ```
 
-## Next: Deployment Pipeline
-The main gap is getting products from `Azure:products/` onto `foundersystems.in` automatically.
+## How To Deploy a New Product
+```bash
+ssh ayush@20.193.252.82
+~/founder-os/builder/deploy.sh <product-folder-name>
+```
+Or Atlas can run this via ssh_azure tool.
+
+## Next Steps
+- Add products to the foundersystems.in catalog page (ProductDetail.jsx)
+- Set up Gumroad/payment links for new tools
+- Automate deploy.sh call at end of every build
