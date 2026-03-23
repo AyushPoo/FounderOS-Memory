@@ -1,78 +1,49 @@
 # VM Status
 
-> Last updated: 2026-03-21 (auto-sync)
+> Last updated: 2026-03-23 by co-founder agent
 
-## GCP VM — n8n Brain
-- **IP:** 34.14.219.64
-- **OS:** Debian Linux
-- **Disk:** 30GB total, 22GB used, 6.2GB free (78%)
-- **User:** ayushpoojary1
-- **Process Manager:** PM2
+## GCP VM — 34.14.219.64
 
-### Running Processes
-| Name | Status | Uptime | Restarts | Memory |
-|------|--------|--------|----------|--------|
-| n8n | ✅ online | 42h+ | 1 | ~660MB |
-| memory-server | ✅ online | 22h+ | 62 | 35MB |
-| custom-memory | ✅ online | 4h+ | 0 | 402MB |
+| Field | Value |
+|-------|-------|
+| Status | Online |
+| OS | Debian Linux |
+| Disk | 30GB / 22GB used / 6.3GB free (78%) |
+| Node.js | v22.22.1 |
+| n8n | Running — https://34.14.219.64.nip.io |
+| n8n uptime | 21h+ (2 total restarts — stable) |
+| memory-server | Running (port 8000) — 62 restarts (investigate) |
+| custom-memory | Running — stable (0 restarts) |
 
-### n8n
-- **Version:** 2.10.4
-- **URL:** https://34.14.219.64.nip.io
-- **DB:** SQLite (internal)
-
-### Mem0 / Custom Memory
-- **Port:** 8000
-- **Auth:** X-API-Key header required
-- **Health endpoint:** GET /health (requires API key)
-- **Agent endpoint:** POST /agent
-- **Upsert endpoint:** POST /upsert
-
-### File Structure
+### Disk Breakdown
 ```
-/home/ayushpoojary1/
-├── .n8n/                    # n8n SQLite DB
-├── .env                     # All env vars (API keys)
-├── founder-os/
-│   ├── builder/             # 8.6MB — builder agent files
-│   ├── context/             # 8KB — skill-registry.json
-│   ├── knowledge/           # 20KB
-│   ├── skill-repos/         # 42MB — cloned repos
-│   └── skills/              # 484MB — 108 skill folders
-└── founder-os-skills/       # 42MB — DUPLICATE (safe to delete)
+founder-os/skills/      484MB   (108 skill folders)
+founder-os/skill-repos/  42MB   (cloned repos)
+founder-os/builder/      8.6MB
+founder-os/knowledge/    20KB
+founder-os/context/      8KB
+.n8n/                   (SQLite DB + executions)
 ```
 
-## Azure VM — fs-builder
-- **IP:** 20.193.252.82
-- **OS:** Ubuntu 24.04
-- **Size:** Standard B2as v2 (2 vCPUs, 8GB RAM)
-- **Disk:** 29GB total, 3.6GB used, 25GB free (13%)
-- **User:** ayush
-- **Location:** Central India (Zone 3)
-- **Created:** 2026-03-21
-- **Status:** ✅ Running
+## Azure VM — 20.193.252.82
 
-### Running Processes
-- PM2: installed but no processes running
-- Node: v22.22.1
-- npm: 10.9.4
+| Field | Value |
+|-------|-------|
+| Status | Online |
+| OS | Ubuntu Linux |
+| Disk | 29GB / 4GB used / 25GB free (15%) |
+| RAM | 1.9GB (be careful with concurrent processes) |
+| Atlas v3 | Running — 51 restarts (bugs fixed 2026-03-23) |
+| HTTP server | python3 -m http.server 3000 (serves products/) |
 
-### File Structure
-```
-/home/ayush/
-└── founder-os/
-    └── builder/
-        ├── CLAUDE.md          # Builder agent instructions
-        ├── HINDSIGHT.md       # Lessons learned
-        ├── PRIMER.md          # Session state
-        ├── .opencode.json     # OpenCode config (mimo-v2-pro-free)
-        ├── FounderOS-Memory/  # Obsidian vault clone
-        ├── docs -> FounderOS-Memory (symlink)
-        └── memory.sh
-```
+### Products Shipped
+| Product | Path | Status |
+|---------|------|--------|
+| Pomodoro Timer | products/pomodoro-timer/index.html | Shipped |
+| Startup Cost Calculator | products/startup-cost-calculator/index.html | Shipped |
 
-### Builder Agent Stack
-- **IDE:** OpenCode (free tier)
-- **Default model:** opencode/mimo-v2-pro-free
-- **Fallback models:** mimo-v2-omni-free → minimax-m2.5-free → nemotron-3-super → gpt-5-nano
-- **Stack:** React + Vite + Tailwind (TypeScript preferred)
+## History
+- 2026-03-19: GCP disk was 100% full — cleaned up
+- 2026-03-21: Mem0 v4 deployed with API key auth
+- 2026-03-22: Atlas v3 built on Azure — multi-model, SSH tools, 20 capabilities
+- 2026-03-23: Fixed Atlas crash bugs (bad tool schema + max_tokens param)
