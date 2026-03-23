@@ -1,109 +1,52 @@
 # Workflow Index
 
-> Last updated: 2026-03-21 (auto-sync)
+> Last updated: 2026-03-23 by co-founder agent
 
-All n8n workflows in the Founder Systems infrastructure.
+## n8n Workflows (GCP — 34.14.219.64.nip.io)
 
-## Active Workflows
+| Status | Name | ID | Description |
+|--------|------|----|-------------|
+| Active | Founder OS Agent | TzpURLXbI6iOfLqU | Main Telegram bot (Gemini) — legacy, superseded by Atlas v3 |
+| Active | Ideas Fetcher | pkTIpthafQ88wkAy | Scrapes 9 sources, ranks with Gemini, saves to Google Sheets |
+| Active | Get Idea Details | zgJBIZS3qUxEwwtd | Deep dive on a single idea |
+| Active | Save Idea | rW7ohKD1BCAWUDtl | Bookmarks idea to Google Sheets |
+| Active | Product Builder | vo7WHaL6rq7yKRvm | Skills lookup + GPT-5.3 planner (NOT yet connected to Atlas) |
+| Active | Build Product Bridge | bOlABGUJiCiZ8I52 | Bridge workflow for product builds |
+| Active | Obsidian Updater | Yg8BWmxKQuCHkn2k | Webhook → GitHub commits to vault |
+| Active | System State Sync | 9LHPPJK0lPoxIls1 | Hourly — updates Workflow Index + Error Log in vault |
+| Active | Github Sync | 3HdXFHlJ6CI1iiPj | GitHub sync workflow |
+| Active | Mem0 memories | BkmdYttcq5lNsyfN | Qdrant/Mem0 memory operations |
+| Inactive | Builder - Web App | xiYFZhlToYLX9g4J | Next.js code gen — BROKEN, replaced by OpenCode on Azure |
+| Inactive | Build_workflow | UenNZUVbklbHEyio | Legacy build workflow |
+| Inactive | My workflow | zVHRqYSWy9WeprNX | Unnamed/unused |
 
-### Founder OS Agent
-- **ID:** TzpURLXbI6iOfLqU
-- **Status:** ACTIVE (but erroring — 20+ failures today)
-- **Trigger:** Telegram message (Bot 2)
-- **LLM:** Google Gemini 2.0 Flash
-- **Memory:** PostgreSQL chat memory (last 10 messages)
-- **Tools:** get_startup_ideas, get_idea_details, save_idea, ask_founder_memory, list_workflows, delete_workflows, build_product
-- **Purpose:** Main AI assistant — handles ideas, details, saves, builds, workflow management
+## Atlas v3 Capabilities (Azure — 20.193.252.82)
 
-### Ideas Fetcher
-- **ID:** pkTIpthafQ88wkAy
-- **Status:** ACTIVE
-- **Trigger:** Called by Founder OS Agent
-- **LLM:** Google Gemini (ranking)
-- **Purpose:** Scrapes 9 sources, ranks top 7 ideas, stores to Google Sheets
-- **Issue:** Wipes sheet before writing (loses history)
+Atlas is the **primary interface** as of 2026-03-22. Replaces the n8n Founder OS Agent for most tasks.
 
-### Get Idea Details
-- **ID:** zgJBIZS3qUxEwwtd
-- **Status:** ACTIVE
-- **Trigger:** Called by Founder OS Agent with idea_name
-- **Purpose:** Deep breakdown of a specific idea
+| Tool | What It Does |
+|------|--------------|
+| ssh_gcp | Run shell commands on GCP VM |
+| ssh_azure | Run shell commands on Azure VM |
+| mem0_search | Search Qdrant vector memory |
+| mem0_store | Store memory to Qdrant |
+| obsidian_read | Read any file from this vault |
+| obsidian_write | Write/append to any vault file |
+| n8n_list_workflows | List all n8n workflows |
+| n8n_get_workflow | Get full workflow JSON |
+| n8n_update_workflow | Update a workflow |
+| n8n_create_workflow | Create a new workflow |
+| n8n_toggle_workflow | Activate/deactivate workflow |
+| n8n_trigger_webhook | Fire any n8n webhook |
+| web_fetch | Fetch URL content |
+| web_search | DuckDuckGo search |
+| file_write | Write file to Azure VM |
+| file_read | Read file from Azure VM |
+| analyze_image | Gemini vision — analyze screenshots |
+| github_browse | Browse any GitHub repo |
+| store_learning | Store learning to Qdrant + vault |
+| read_own_code | Atlas reads its own source |
 
-### Save Idea
-- **ID:** rW7ohKD1BCAWUDtl
-- **Status:** ACTIVE
-- **Trigger:** Called by Founder OS Agent
-- **Purpose:** Saves idea to Google Sheets
-- **Issue:** Only saves name, not full details/score
-
-### Product Builder
-- **ID:** vo7WHaL6rq7yKRvm
-- **Status:** ACTIVE but incomplete
-- **Trigger:** Webhook POST
-- **LLM:** GPT 5.3 (Azure OpenAI)
-- **Purpose:** Idea to skills match to GPT plan to builder routing
-- **Issue:** If node uses AND logic (impossible), not connected to Agent
-
-### Build Product Bridge
-- **ID:** bOlABGUJiCiZ8I52
-- **Status:** ACTIVE
-- **Purpose:** Bridge between Agent build_product tool and Product Builder
-- **Updated:** 2026-03-21
-
-### Obsidian Updater
-- **ID:** Yg8BWmxKQuCHkn2k
-- **Status:** ACTIVE
-- **Trigger:** POST /webhook/update-obsidian
-- **Purpose:** Writes/appends content to Obsidian vault via GitHub API + syncs to Mem0
-- **Actions supported:** append, overwrite, create, update_table
-
-### Github Sync
-- **ID:** 3HdXFHlJ6CI1iiPj
-- **Status:** ACTIVE
-- **Trigger:** GitHub webhook (push to FounderOS-Memory)
-- **Purpose:** Syncs changed .md files from GitHub to Mem0 vector store
-
-### Mem0 Memories
-- **ID:** BkmdYttcq5lNsyfN
-- **Status:** ACTIVE
-- **Trigger:** POST /webhook/memory
-- **Purpose:** Receives memory text, searches Mem0, routes to correct Obsidian folder, saves to GitHub
-
-### System State Sync
-- **ID:** (to be created)
-- **Status:** PLANNED
-- **Purpose:** Hourly sync of VM status, workflow list, errors to vault
-
-## Inactive Workflows
-
-### Builder - Web App
-- **ID:** xiYFZhlToYLX9g4J
-- **Status:** INACTIVE (broken config)
-- **Note:** Replaced by OpenCode direct execution on Azure VM
-
-### Build_workflow
-- **ID:** UenNZUVbklbHEyio
-- **Status:** INACTIVE
-- **Purpose:** Meta-tool to generate n8n workflows from description
-
-### My workflow
-- **ID:** zVHRqYSWy9WeprNX
-- **Status:** INACTIVE
-- **Purpose:** Unknown/test
-
-## Pipeline Map
-```
-Telegram -> [Founder OS Agent]
-              -> get_startup_ideas -> [Ideas Fetcher] -> Google Sheets
-              -> get_idea_details  -> [Get Idea Details]
-              -> save_idea         -> [Save Idea] -> Google Sheets
-              -> build_product     -> [Build Product Bridge] -> [Product Builder]
-                                                               -> Azure VM (OpenCode)
-                                                               -> GitHub -> Website
-              -> ask_founder_memory -> Mem0 /agent
-              -> list/delete workflows -> n8n API
-
-GitHub push -> [Github Sync] -> Mem0
-POST /memory -> [Mem0 Memories] -> Obsidian + Mem0
-POST /update-obsidian -> [Obsidian Updater] -> GitHub + Mem0
-```
+## Known Broken / Inactive
+- **Builder - Web App** — inactive, replaced by OpenCode CLI on Azure
+- **Founder OS Agent (n8n)** — still active but Atlas v3 is now the primary agent
