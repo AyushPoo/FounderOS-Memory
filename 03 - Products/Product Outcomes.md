@@ -1,30 +1,33 @@
-# Product Outcomes Tracker
+# Product Outcomes
 
-Track what happens AFTER a product is built and launched. This data feeds back into idea scoring.
+> Last updated: 2026-03-23 by co-founder agent
 
-## Metrics We Track
-- **Build Success:** Did it build without errors? How many review cycles?
-- **Time to Build:** Hours from plan → deployed
-- **Revenue:** First 7d, 30d, 90d
-- **Downloads/Purchases:** Count per platform
-- **Refund Rate:** % of purchases refunded
-- **Customer Feedback:** Positive/negative signals
+## Shipped Products
 
-## Outcome Log
-| Product | Launched | Build Hours | Revenue 30d | Purchases | Refund % | Score | Notes |
-|---------|----------|-------------|-------------|-----------|----------|-------|-------|
-| SaaS Financial Model | 2026-03 | manual | - | - | - | - | Pre-existing product, no tracking yet |
-| Advanced B2B SaaS Model | 2026-03 | manual | - | - | - | - | Pre-existing product, no tracking yet |
-| Marketplace Financial Model | 2026-03 | manual | - | - | - | - | Pre-existing product, no tracking yet |
-| D2C & Ecommerce Model | 2026-03 | manual | - | - | - | - | Pre-existing product, no tracking yet |
+| Product | Type | Status | Location | Notes |
+|---------|------|--------|----------|-------|
+| Pomodoro Timer | Web App (HTML) | Shipped | Azure: products/pomodoro-timer/index.html | Static HTML, served on port 3000 |
+| Startup Cost Calculator | Web App (HTML) | Shipped | Azure: products/startup-cost-calculator/index.html | Static HTML, served on port 3000 |
 
-## How This Improves the System
-1. Ideas with similar traits to successful products get higher scores
-2. Product types that sell well get prioritized
-3. Build approaches that succeed get repeated
-4. Price points that convert get recommended
+## Pipeline Status
 
-## Update Frequency
-- Build metrics: logged automatically after build completes
-- Revenue: updated weekly (manual until marketplace webhooks are wired)
-- Feedback: captured as it comes in
+```
+Idea (Google Sheets)
+    |
+    v
+Product Builder (n8n) -- GPT-5.3 plan
+    |
+    v
+OpenCode (Azure) -- code generation
+    |
+    v
+products/ on Azure VM  <-- HERE currently
+    |
+    x  (NO DEPLOYMENT PIPELINE YET)
+    |
+    v
+foundersystems.in  <-- TARGET
+```
+
+## Next: Deployment Pipeline
+The main gap is getting products from `Azure:products/` onto `foundersystems.in` automatically.
