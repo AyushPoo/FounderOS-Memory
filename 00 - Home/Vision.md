@@ -19,14 +19,22 @@ An autonomous AI-powered product factory that:
 
 ## Current Reality vs Target
 
-### Now
+### Now (as of 2026-03-23)
 ```
-Ayush (Telegram) → n8n → Gemini → Ideas → Google Sheets
-                                         → GPT 5.3 plans (partial)
-                                         → Code generation (broken)
-                                         → ❌ No publish
-                                         → ❌ No marketing  
-                                         → ❌ No analytics
+Ayush (Telegram) → n8n (@Rayquabot)
+  → Ideas Fetcher (scrapes PH/HN/Reddit/GH) ✅
+  → Get Idea Details ✅
+  → Save Idea → Google Sheets ⚠️ (auth broken)
+  → Product Builder → GPT-5.3 plan ✅ (Suggest Changes not wired)
+  → Builder - Web App ❌ BROKEN
+  → ❌ No other builders (extensions, Excel, PPT, Notion etc.)
+  → ❌ No deploy to website/Gumroad/LemonSqueezy
+  → ❌ No marketing posts
+  → ❌ No analytics
+
+Azure VM: Atlas v3 (@Blasikenbot) ✅ running (50+ restarts, needs fix)
+  → Can SSH both VMs, browse web, write files, talk to n8n, Obsidian
+  → Products folder: pomodoro-timer, startup-cost-calculator (NOT deployed)
 ```
 
 ### Target
