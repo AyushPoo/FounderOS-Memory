@@ -1,32 +1,32 @@
 # Known Issues
 
-> Last updated: 2026-03-21 (auto-sync)
+> Last updated: 2026-03-23 by co-founder agent
 
-## Critical
-- [ ] **Founder OS Agent errors** — workflow TzpURLXbI6iOfLqU throwing errors on every Telegram message (20+ errors today). Needs investigation.
-- [ ] **Builder - Web App inactive** — workflow xiYFZhlToYLX9g4J is INACTIVE. Builds now triggered via OpenCode directly on Azure VM instead.
-- [ ] **Product Builder not connected to Agent** — no tool call from Telegram agent to trigger builds end-to-end
+## Open Issues
 
-## High Priority
-- [ ] **If node in Product Builder uses AND logic** — impossible condition, should be Switch node
-- [ ] **Post-Planner code node is placeholder** — just adds myNewField=1, does not parse GPT response
-- [ ] **Only web_app builder exists** — excel, extension, script builders not built yet
-- [ ] **Save Idea loses data** — only saves name, not full description/score/details
+| # | Issue | Severity | Notes |
+|---|-------|----------|-------|
+| 1 | memory-server (GCP) — 62 restarts | Medium | Still running but unstable. Needs log investigation. |
+| 2 | Product data hardcoded in JSX on foundersystems.in | Medium | No CMS. Every new product requires a code deploy. |
+| 3 | Port 3000 exposed to internet on Azure | Low | Python HTTP server scanned by bots. Not a crash risk. |
+| 4 | Product Builder workflow not connected to Atlas | Medium | Triggered via webhook only, not from Telegram/Atlas yet. |
+| 5 | No deployment pipeline from Azure products/ to live website | High | Products built but served on raw port — not on foundersystems.in |
 
-## Medium Priority
-- [ ] **Ideas Fetcher wipes history** — clears entire Google Sheet before writing new ideas
-- [ ] **Skill matching is basic keyword grep** — skill-registry.json exists but not used properly
-- [ ] **No error handling in workflows** — most have no error catching or retry logic
-- [ ] **No feedback loop** — built products not tracked, no quality review, no market analysis
-- [ ] **Antigravity not connected** — website deployment is manual
-- [ ] **Product data on website is hardcoded JSX** — no CMS or API
+## Fixed Issues
 
-## Low Priority
-- [ ] **founder-os-skills/ duplicate** — 42MB duplicate on GCP VM (safe to delete when needed)
-- [ ] **No workflow versioning** — n8n workflow changes not version tracked
-- [ ] **PM2 memory-server restarts** — 62 restarts, investigate root cause
+| Date | Issue | Fix |
+|------|-------|-----|
+| 2026-03-23 | Atlas crashes 50+ times — bad n8n_create_workflow tool schema | Fixed: added items:{type:object} to nodes array |
+| 2026-03-23 | Atlas crashes on GPT-5.3 calls — max_tokens not supported | Fixed: flagged gpt53 as is_reasoning to use max_completion_tokens |
+| 2026-03-23 | Obsidian vault stale — not updating | Fixed: was caused by Atlas crashes above. Webhook confirmed working. |
+| 2026-03-21 | GCP disk 100% full | Fixed: cleaned up duplicate skill repos |
+| 2026-03-20 | n8n API edits corrupted workflow state | Fixed: avoid editing 200+ node workflows via API |
+| 2026-03-21 | Gemini API key blocked by IP restriction | Fixed: whitelisted VM IPs |
 
-## Resolved
-- [x] **Disk 100% full** — was stale info. Actual: 78% used (22GB/30GB). Not critical.
-- [x] **Mem0 security** — API key auth added 2026-03-21, keys moved to .env
-- [x] **Stale vault** — auto-sync system built 2026-03-21
+## Tech Gotchas (permanent notes)
+- Gemini API key has IP restriction — must allowlist both IPv4 and IPv6 of VMs
+- n8n `specifyBody: json` with expressions in `jsonBody` fails validation — use Code node to pre-serialize
+- n8n `webhook-test/` URLs only work in test mode — use `webhook/` for production
+- Azure VM only has 1.9GB RAM — avoid restarting multiple PM2 services simultaneously
+- GPT-5.3 uses `max_completion_tokens` not `max_tokens`
+- Product data on foundersystems.in is hardcoded in JSX — no CMS or API yet
