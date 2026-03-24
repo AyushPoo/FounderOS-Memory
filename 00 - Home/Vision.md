@@ -49,3 +49,8 @@ Auto-scrape → Plan → Build → Publish → Market → Analyze → Learn
 - **Email:** ayushpoojary1@gmail.com
 - **Location:** Bengaluru, India
 - **Tools:** Antigravity IDE, ChatGPT, Claude, BrowserOS, Arena AI
+
+## Infrastructure IPs (updated 2026-03-24)
+- GCP VM: **34.47.167.251** (updated after VM restart — old IP was 34.14.219.64)
+- Azure VM: 20.193.252.82
+- n8n URL: https://34.47.167.251.nip.io
