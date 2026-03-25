@@ -19,8 +19,8 @@ An automated pipeline that:
 6. (Future) Markets and analyzes performance
 
 ## Infrastructure
-- GCP VM at 34.14.219.64, running n8n via PM2
-- n8n URL: https://34.14.219.64.nip.io
+- GCP VM at 34.47.167.251, running n8n via PM2
+- n8n URL: https://34.47.167.251.nip.io
 - LLMs: Google Gemini (ideas), GPT 5.3 Azure (planning + code gen)
 - Telegram bot as main control interface
 - Google Sheets as ideas storage
@@ -30,12 +30,13 @@ An automated pipeline that:
 - Obsidian vault (this) as central memory layer
 
 ## Key n8n Workflows
-- Founder OS Agent (YSPgCuzj9JIHS7EG) — Telegram AI assistant
-- Ideas Fetcher (pkTIpthafQ88wkAy) — scrapes + ranks ideas
-- Get Idea Details (zgJBIZS3qUxEwwtd) — deep dive on one idea
-- Save Idea (rW7ohKD1BCAWUDtl) — bookmark to Google Sheets
-- Product Builder (vo7WHaL6rq7yKRvm) — skills + GPT 5.3 planner
-- Builder - Web App (xiYFZhlToYLX9g4J) — generates Next.js code (INACTIVE/BROKEN)
+- Founder OS Agent (New, ID: yXPkDYoKc4H2aLiB): ❌ Archived
+- Founder OS Agent (Old, ID: TzpURLXbI6iOfLqU): ✅ Active (Conflicting with new agent)
+- Ideas Fetcher (ID: pkTIpthafQ88wkAy): ✅ Active
+- Get Idea Details (ID: zgJBIZS3qUxEwwtd): ✅ Active
+- Save Idea (ID: rW7ohKD1BCAWUDtl): ✅ Active (⚠️ Google Sheets auth broken)
+- Product Builder (ID: vo7WHaL6rq7yKRvm): ✅ Active
+- Builder - Web App (ID: xiYFZhlToYLX9g4J): ❌ Inactive
 
 ## VM Structure
 /home/ayushpoojary1/
@@ -46,13 +47,13 @@ An automated pipeline that:
 │   └── context/
 │       └── skill-registry.json  # Maps product types to skills
 
-## Active Issues
-1. VM disk 100% full — needs cleanup
-2. Product Builder not connected to Telegram agent
-3. Builder - Web App has broken config + is inactive
-4. If node in Product Builder uses wrong AND logic (should be Switch)
-5. No deployment pipeline from code generation to live website
-6. Antigravity not connected to n8n
+## Active Issues (as of 2026-03-25)
+1. New Founder OS Agent (yXPkDYoKc4H2aLiB) is archived and cannot be activated via API. Requires manual unarchive/activation.
+2. Old Founder OS Agent (TzpURLXbI6iOfLqU) is still active, creating a conflict.
+3. Save Idea workflow (rW7ohKD1BCAWUDtl) still has "Google Sheets auth broken" issue.
+4. Atlas API (on Azure VM) has 15 restarts in 24 hours.
+5. No proper deployment pipeline from code generation to live website.
+6. Antigravity not connected to n8n.
 
 ## Ayush's Style
 - Non-technical founder — explain things simply
