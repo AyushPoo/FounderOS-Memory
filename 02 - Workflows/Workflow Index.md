@@ -1,8 +1,7 @@
 # Workflow Index
+> Last updated: 2026-03-25 by co-founder agent
 
-> Last updated: 2026-03-23 by co-founder agent
-
-## n8n Workflows (GCP — 34.14.219.64.nip.io)
+## n8n Workflows (GCP — 34.47.167.251.nip.io)
 
 | Status | Name | ID | Description |
 |--------|------|----|-------------|
@@ -10,18 +9,17 @@
 | Active | Ideas Fetcher | pkTIpthafQ88wkAy | Scrapes 9 sources, ranks with Gemini, saves to Google Sheets |
 | Active | Get Idea Details | zgJBIZS3qUxEwwtd | Deep dive on a single idea |
 | Active | Save Idea | rW7ohKD1BCAWUDtl | Bookmarks idea to Google Sheets |
-| Active | Product Builder | vo7WHaL6rq7yKRvm | Skills lookup + GPT-5.3 planner (NOT yet connected to Atlas) |
+| Active | Product Builder | vo7WHaL6rq7yKRvm | Skills lookup + GPT-5.3 planner — fixed 2026-03-25 |
 | Active | Build Product Bridge | bOlABGUJiCiZ8I52 | Bridge workflow for product builds |
 | Active | Obsidian Updater | Yg8BWmxKQuCHkn2k | Webhook → GitHub commits to vault |
-| Active | System State Sync | 9LHPPJK0lPoxIls1 | Hourly — updates Workflow Index + Error Log in vault |
+| Active | System State Sync | 9LHPPJK0lPoxIls1 | Hourly — updates Workflow Index + Error Log — fixed 2026-03-25 |
 | Active | Github Sync | 3HdXFHlJ6CI1iiPj | GitHub sync workflow |
 | Active | Mem0 memories | BkmdYttcq5lNsyfN | Qdrant/Mem0 memory operations |
-| Inactive | Builder - Web App | xiYFZhlToYLX9g4J | Next.js code gen — BROKEN, replaced by OpenCode on Azure |
+| Inactive | Builder - Web App | xiYFZhlToYLX9g4J | Next.js code gen — replaced by OpenCode on Azure |
 | Inactive | Build_workflow | UenNZUVbklbHEyio | Legacy build workflow |
 | Inactive | My workflow | zVHRqYSWy9WeprNX | Unnamed/unused |
 
 ## Atlas v3 Capabilities (Azure — 20.193.252.82)
-
 Atlas is the **primary interface** as of 2026-03-22. Replaces the n8n Founder OS Agent for most tasks.
 
 | Tool | What It Does |
