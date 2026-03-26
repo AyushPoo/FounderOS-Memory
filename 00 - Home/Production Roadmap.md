@@ -12,7 +12,7 @@ Full pipeline: **Idea → Approval → Plan → Build → Deploy → Market → 
 - [x] **Fix Atlas crash loop** — founder-agent still showing 50+ restarts, needs root cause
 - [x] **Fix memory-server restarts** — 62 restarts on GCP, investigate cause
 - [ ] **Fix "Suggest Changes" button** — Product Builder has the button but no branch handling it in n8n
-- [ ] **Fix Builder - Web App workflow** — marked BROKEN/INACTIVE, needs repair or replacement
+- [x] **Fix Builder - Web App workflow** — fixed malformed URL + wrong header name, re-activated (2026-03-26)
 
 ---
 
@@ -135,7 +135,7 @@ Currently only web apps are attempted. Need builders for ALL types:
 
 | Phase | Status | Blockers |
 |-------|--------|----------|
-| Phase 1 — Fix broken | 🟡 In progress | — |
+| Phase 1 — Fix broken | 🟡 In progress (4/5 done) | — |
 | Phase 2 — Core pipeline | 🟡 Partial | Sheets auth, broken builder |
 | Phase 3 — Deployment | 🔴 Not started | Need pipeline working first |
 | Phase 4 — Marketing | 🔴 Not started | Need deployment working |
