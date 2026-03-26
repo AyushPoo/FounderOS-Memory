@@ -11,7 +11,7 @@ Full pipeline: **Idea → Approval → Plan → Build → Deploy → Market → 
   - Affects: Ideas Fetcher "Clear sheet" node, Save Idea workflow
 - [x] **Fix Atlas crash loop** — founder-agent still showing 50+ restarts, needs root cause
 - [x] **Fix memory-server restarts** — 62 restarts on GCP, investigate cause
-- [ ] **Fix "Suggest Changes" button** — Product Builder has the button but no branch handling it in n8n
+- [x] **Fix "Suggest Changes" button** — added Is Suggest Changes? node + Request Feedback Telegram node (2026-03-26) — Product Builder has the button but no branch handling it in n8n
 - [x] **Fix Builder - Web App workflow** — fixed malformed URL + wrong header name, re-activated (2026-03-26)
 
 ---
@@ -135,7 +135,7 @@ Currently only web apps are attempted. Need builders for ALL types:
 
 | Phase | Status | Blockers |
 |-------|--------|----------|
-| Phase 1 — Fix broken | 🟡 In progress (4/5 done) | — |
+| Phase 1 — Fix broken | ✅ Complete (5/5) | — |
 | Phase 2 — Core pipeline | 🟡 Partial | Sheets auth, broken builder |
 | Phase 3 — Deployment | 🔴 Not started | Need pipeline working first |
 | Phase 4 — Marketing | 🔴 Not started | Need deployment working |
