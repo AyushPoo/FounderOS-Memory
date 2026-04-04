@@ -1,120 +1,112 @@
 # Architecture Overview
 
-> Last updated: 2026-03-23 by co-founder agent
+> Last updated: 2026-04-04 by co-founder agent
 
 ## Infrastructure
 
-### GCP VM (34.14.219.64)
-- **OS:** Debian Linux
-- **Disk:** 30GB total, 22GB used, 6.3GB free (78%)
-- **User:** ayushpoojary1
-- **Process Manager:** PM2
-- **n8n:** Running at https://34.14.219.64.nip.io (uptime: stable, 2 restarts total)
-- **Node.js:** v22.22.1
+> â ï¸ **GCP VM NO LONGER EXISTS.** All services run on the Azure VM.
 
-### Azure VM (20.193.252.82)
+### Azure VM (20.193.252.82) â ONLY SERVER
+
 - **OS:** Ubuntu Linux
-- **Disk:** 29GB total, 4GB used, 25GB free (15%) — plenty of headroom
+- **Disk:** 29GB total, ~4GB used, ~25GB free
 - **User:** ayush
-- **RAM:** 1.9GB — avoid running heavy processes simultaneously
+- **RAM:** 1.9GB â avoid running heavy processes simultaneously
 - **Process Manager:** PM2
+- **n8n:** https://n8n.foundersystems.in (nginx reverse proxy)
 
-### Key Paths — GCP
-```
-/home/ayushpoojary1/
-├── .n8n/                         # n8n data
-└── founder-os/
-    ├── builder/                  # 8.6MB — build orchestration
-    ├── context/                  # 8KB — skill registry
-    ├── knowledge/                # 20KB
-    ├── skill-repos/              # 42MB — cloned skill repos
-    └── skills/                   # 484MB — 108 skill folders
-```
+### Key Paths â Azure
 
-### Key Paths — Azure
 ```
 /home/ayush/
-├── .env                          # All secrets/API keys
-├── founder-os/
-│   ├── agent/                    # Atlas v3 Telegram bot
-│   │   ├── main.py
-│   │   ├── models.py             # Multi-model router (GPT-5.3, Grok, Llama)
-│   │   ├── tools.py              # 20 tools (SSH, Mem0, n8n, GitHub, web, etc.)
-│   │   ├── state/                # agent_state.json, conversations.json
-│   │   └── venv/
-│   └── builder/                  # Build session context
-│       ├── PRIMER.md             # Current build state
-│       ├── HINDSIGHT.md          # Lessons learned
-│       ├── CLAUDE.md             # Claude-specific instructions
-│       └── FounderOS-Memory/     # Vault mirror
-└── products/
-    ├── pomodoro-timer/           # index.html — SHIPPED
-    ├── startup-cost-calculator/  # index.html — SHIPPED
-    └── serve.py                  # Static file server (port 3000)
+âââ .env                          # All secrets/API keys
+âââ litellm-config.yaml           # LiteLLM model routing config
+âââ analytics/                    # analytics-api (port 3001, SQLite)
+âââ atlas-api/                    # Atlas v3 Telegram bot
+â   âââ main.py
+â   âââ models.py                 # Multi-model router
+â   âââ tools.py                  # 20 tools (SSH, n8n, GitHub, web, etc.)
+âââ openclaw-gateway/             # OpenClaw API gateway
+âââ products/
+    âââ pomodoro-timer/           # index.html â SHIPPED
+    âââ startup-cost-calculator/  # index.html â SHIPPED
 ```
 
 ### External Services
+
 | Service | Purpose | Status |
 |---------|---------|--------|
-| Google Gemini 2.5 Flash | Ideas/chat LLM | Active (IP restriction: allow VM IPs) |
-| Azure OpenAI GPT-5.3 | Planning + code gen | Active (deployment: gpt-5.3-chat) |
-| Azure OpenAI Grok 4.1 Fast | Default chat model | Active |
-| Groq Llama 3.3 70B | Fallback model | Active |
-| OpenCode (free tier) | Code generation in builder | Active |
-| Telegram Bot (Atlas) | Main Founder OS interface | Active |
-| Telegram Bot 2 | n8n workflow bot | Active |
-| Google Sheets | Ideas storage | Active |
-| PostgreSQL | Chat memory (legacy) | Active |
-| Qdrant + Mem0 | Vector memory | Active (GCP port 8000) |
-| GitHub (AyushPoo) | Code + Obsidian sync | Active |
+| Azure OpenAI GPT-5.3 | Planning + code gen (via LiteLLM port 4000) | â Active |
+| Azure OpenAI Grok 4.1 Fast | Default Atlas chat model | â Active |
+| Google Gemini 2.5 Flash | Ideas ranking, summarization | â Active |
+| Groq Llama 3.3 70B | Fallback model | â Active |
+| Qdrant (port 6333) | Vector DB for Atlas memory | â Active |
+| PostgreSQL | n8n database backend | â Active |
+| Telegram (@Blasikenbot) | Atlas v3 â primary interface | â Active |
+| Telegram (@Rayquabot) | n8n workflow bot | â Active |
+| Google Sheets | Ideas storage | â Active |
+| Gumroad + LemonSqueezy | Product sales platforms | â Active |
+| Vercel | Website hosting (foundersystems.in) | â Active |
+| GitHub (AyushPoo) | Code + Obsidian vault sync | â Active |
 
 ### PM2 Processes
-**GCP:**
-| Name | Status | Restarts | Notes |
-|------|--------|----------|-------|
-| n8n (id:0) | online | 2 | Stable |
-| memory-server (id:5) | online | 62 | Needs investigation |
-| custom-memory (id:9) | online | 0 | Stable |
 
-**Azure:**
-| Name | Status | Restarts | Notes |
-|------|--------|----------|-------|
-| founder-agent (id:0) | online | 51 | Fixed 2026-03-23 — was crashing due to bad tool schema + wrong max_tokens param |
+| Name | Port | Purpose |
+|------|------|---------|
+| analytics-api | 3001 | Sales/analytics REST API |
+| atlas-api | â | Atlas v3 (@Blasikenbot) |
+| auto-healer | â | PM2 watchdog (restarts crashed processes) |
+| founder-agent | â | Core pipeline orchestrator |
+| litellm-proxy | 4000 | LLM router â Azure OpenAI |
+| n8n | 5678 | Workflow automation |
+| openclaw-gateway | â | OpenClaw API gateway |
 
 ## Data Flow
+
 ```
 Telegram (Ayush)
-      |
-      v
-  Atlas v3 (Azure)
-  - GPT-5.3 / Grok / Llama
-  - 20 tools
-      |
-      +---> ssh_gcp / ssh_azure  -->  VM commands
-      +---> n8n_*               -->  Workflow control
-      +---> mem0_search/store   -->  Qdrant memory (GCP:8000)
-      +---> obsidian_write      -->  GitHub vault (via n8n webhook)
-      +---> web_search/fetch    -->  Internet
-      |
-      v
-  n8n (GCP) — 13 workflows
-      |
-      +---> Ideas Fetcher       -->  Google Sheets
-      +---> Product Builder     -->  GPT-5.3 plans
-      +---> Obsidian Updater    -->  GitHub vault
-      +---> System State Sync   -->  Hourly vault refresh
+      â
+      â¼
+  @Blasikenbot â Atlas v3 (Azure VM)
+  - GPT-5.3 / Grok / Llama via LiteLLM
+  - 20+ tools
+      â
+      ââââº ssh_azure        â VM commands
+      ââââº n8n_*            â Workflow control
+      ââââº mem0_search/store â Qdrant memory (port 6333)
+      ââââº obsidian_write   â GitHub vault (via n8n webhook)
+      ââââº web_search/fetch â Internet
+
+  @Rayquabot â n8n (37 workflows, Azure VM)
+      â
+      ââââº Ideas Fetcher    â Google Sheets
+      ââââº Product Builder  â GPT-5.3 plans â GitHub â Vercel
+      ââââº Obsidian Updater â GitHub vault
+      ââââº Health Monitor   â 5-min uptime checks
+      ââââº Daily Backup     â n8n workflows â GitHub
+      ââââº Error Handler    â Telegram alerts on failures
+
+  Products Pipeline:
+  Build â Azure /products/ â GitHub (AyushPoo/Founder-Systems) â Vercel â foundersystems.in
 ```
 
-## Known Issues (as of 2026-03-23)
-| # | Issue | Status |
-|---|-------|--------|
-| 1 | Atlas crashes on GPT-5.3 calls | FIXED — bad schema + max_tokens param |
-| 2 | memory-server 62 restarts | Open — needs log investigation |
-| 3 | Builder - Web App workflow | Inactive — builds done via OpenCode directly |
-| 4 | Product data hardcoded in JSX on foundersystems.in | Open — no CMS yet |
-| 5 | Port 3000 exposed to internet (bots scanning) | Low priority |
+## Deployment Pipeline
+
+```
+Product files (Azure VM /products/<name>/)
+  â
+  âââº deploy.sh â git push â AyushPoo/Founder-Systems
+                                    â
+                                    âââº GitHub Actions (deploy.yml)
+                                    â       âââº Vercel deploy â foundersystems.in
+                                    â
+                                    âââº GitHub Actions (product-sync.yml)
+                                            âââº n8n webhook â Gumroad + LemonSqueezy sync
+```
 
 ## Related
+
 - [[VM Status]]
+- [[n8n-Workflows]]
+- [[Infrastructure]]
 - [[Workflow Index]]
-- [[Skill Registry]]
