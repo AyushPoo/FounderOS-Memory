@@ -1,155 +1,129 @@
-# 🗺️ Founder Systems — Production Roadmap
-_Last updated: 2026-03-26_
+# ðºï¸ Founder Systems â Production Roadmap
+_Last updated: 2026-04-04_
 
-Full pipeline: **Idea → Approval → Plan → Build → Deploy → Market → Track**
-
----
-
-## 🔴 PHASE 1 — Fix What's Broken (Blockers)
-
-- [x] **Fix Google Sheets OAuth** — credential expired (EAUTH), re-auth in n8n UI
-  - Affects: Ideas Fetcher "Clear sheet" node, Save Idea workflow
-- [x] **Fix Atlas crash loop** — founder-agent still showing 50+ restarts, needs root cause
-- [x] **Fix memory-server restarts** — 62 restarts on GCP, investigate cause
-- [x] **Fix "Suggest Changes" button** — added Is Suggest Changes? node + Request Feedback Telegram node (2026-03-26) — Product Builder has the button but no branch handling it in n8n
-- [x] **Fix Builder - Web App workflow** — fixed malformed URL + wrong header name, re-activated (2026-03-26)
+Full pipeline: **Idea â Approval â Plan â Build â Deploy â Market â Track**
 
 ---
 
-## 🟡 PHASE 2 — Complete the Core Pipeline
+## â PHASE 1 â Fix What's Broken (Blockers) â COMPLETE
 
-### 2A · Ideas → Fetch → Select
-- [ ] Confirm Ideas Fetcher scrapes all sources: ProductHunt, HN, IndieHackers, Reddit, GitHub Trending
-- [ ] Ideas ranked and sent to Telegram with selection buttons (Yes / No / Details)
-- [ ] "Get Idea Details" gives full breakdown when requested
-- [ ] "Save Idea" saves to Google Sheets reliably (needs Sheets fix first)
-
-### 2B · Plan → Skills → Approve
-- [ ] Product Builder receives selected idea and auto-selects relevant skills from the skills library
-- [ ] GPT-5.3 generates a detailed product plan (features, stack, file structure)
-- [ ] Plan sent to Telegram with: **Approve / Suggest Changes / Reject**
-- [ ] "Suggest Changes" flow: Ayush gives feedback → plan revised → re-sent for approval
-- [ ] Plan stored in Obsidian under `06 - Products/[ProductName]/plan.md`
-
-### 2C · Build — All Product Types
-Currently only web apps are attempted. Need builders for ALL types:
-
-- [ ] **Web App builder** — Next.js / static HTML (fix existing broken workflow)
-- [ ] **Chrome Extension builder** — manifest.json, popup, background script, content script
-- [ ] **Excel / Google Sheets template builder** — formulas, structure, sample data (via Python openpyxl)
-- [ ] **PowerPoint / Google Slides builder** — python-pptx or similar
-- [ ] **Notion template builder** — exported .zip or Notion API duplication link
-- [ ] **Script / CLI tool builder** — Python or Node, packaged with README
-- [ ] **PDF / eBook builder** — markdown → PDF (pandoc or similar)
-- [ ] Each builder: receives plan → generates all files → saves to Azure `/products/[name]/`
-
-### 2D · Quality Gate
-- [ ] After build: auto-check that all files are present and non-empty
-- [ ] For web apps: lint check (ESLint / basic HTML validator)
-- [ ] Summary report sent to Telegram: files created, any errors
-- [ ] Ayush gets **Deploy / Fix / Reject** buttons
+- [x] **Fix Google Sheets OAuth** â re-authed in n8n UI
+- [x] **Fix Atlas crash loop** â fixed bad tool schema + max_tokens param (2026-03-23)
+- [x] **Fix memory-server restarts** â GCP VM decommissioned (services moved to Azure)
+- [x] **Fix "Suggest Changes" button** â added Is Suggest Changes? node + Request Feedback Telegram node (2026-03-26)
+- [x] **Fix Builder - Web App workflow** â fixed malformed URL + wrong header name, re-activated (2026-03-26)
 
 ---
 
-## 🟠 PHASE 3 — Deployment
+## ð¡ PHASE 2 â Complete the Core Pipeline (Partial)
 
-### 3A · GitHub
-- [ ] Auto-create GitHub repo under AyushPoo account
-- [ ] Push all product files to repo
-- [ ] Add README auto-generated from plan
-- [ ] Tag release v1.0.0
+### 2A Â· Ideas â Fetch â Select
+- [x] Ideas Fetcher scrapes 9 sources, ranks with Gemini, saves to Google Sheets
+- [x] Ideas ranked and sent to Telegram with selection buttons
+- [x] "Get Idea Details" gives full breakdown when requested
+- [ ] "Save Idea" â verify Google Sheets auth still reliable
 
-### 3B · Website (foundersystems.in)
-- [ ] Audit current website structure — how existing product pages are built
-- [ ] Build page generator: takes product name, description, price, screenshots → generates matching page
-- [ ] Auto-deploy new page to foundersystems.in via GitHub push + CI/CD
-- [ ] Page follows the same layout/style as existing products on the site
+### 2B Â· Plan â Skills â Approve
+- [x] Product Builder receives selected idea and auto-selects relevant skills
+- [x] GPT-5.3 generates detailed product plan via LiteLLM proxy
+- [x] Plan sent to Telegram with: **Approve / Suggest Changes / Reject**
+- [x] "Suggest Changes" flow working
+- [ ] Plan stored in Obsidian under `06 - Products/[ProductName]/plan.md` â not yet wired
 
-### 3C · Sales Platforms
-- [ ] **Gumroad** — auto-create product listing via Gumroad API (name, description, price, files)
-- [ ] **LemonSqueezy** — auto-create product via LemonSqueezy API
-- [ ] **Instamojo** — auto-create product listing (check if API available, else flag for manual)
-- [ ] All 3 listings: consistent title, description, pricing, product files uploaded
-- [ ] Links to all 3 stores saved in Obsidian product page
+### 2C Â· Build â All Product Types
+- [x] **Web App builder** â static HTML via OpenCode
+- [ ] **Chrome Extension builder**
+- [ ] **Excel / Google Sheets template builder**
+- [ ] **PowerPoint / Google Slides builder**
+- [ ] **Notion template builder**
+- [ ] **Script / CLI tool builder**
+- [ ] **PDF / eBook builder**
 
----
-
-## 🟢 PHASE 4 — Marketing
-
-### 4A · Content Generation
-- [ ] Auto-generate platform-specific posts from product plan:
-  - **Twitter/X** — short punchy thread (3-5 tweets), hook + features + CTA + link
-  - **Reddit** — long-form post for relevant subreddits (r/SideProject, r/entrepreneur, r/indiehackers, r/tools, niche subreddits based on product)
-  - **Product Hunt** — tagline, description, first comment, maker comment
-  - **Hacker News** — "Show HN" post text
-  - **LinkedIn** — professional angle post
-  - **IndieHackers** — milestone post format
-
-### 4B · Auto-Posting (or Approval Queue)
-- [ ] Posts sent to Telegram for review with **Post Now / Edit / Skip** per platform
-- [ ] Auto-post to Twitter via API after approval
-- [ ] Auto-post to Reddit via API after approval
-- [ ] Product Hunt and HN: manual post (platform rules), but content ready to copy-paste
-- [ ] All posts + links logged in Obsidian
+### 2D Â· Quality Gate
+- [x] Quality Gate Actions workflow â post-build checks
+- [ ] Full lint + validation checks
+- [ ] Deploy / Fix / Reject Telegram buttons
 
 ---
 
-## 🔵 PHASE 5 — Analytics Dashboard
+## â PHASE 3 â Deployment â COMPLETE
 
-### 5A · Data Collection (per product)
-- [ ] Gumroad: sales count, revenue, conversion rate (via API)
-- [ ] LemonSqueezy: same (via API)
-- [ ] Instamojo: same (via API or manual)
-- [ ] GitHub: stars, forks, clones (via GitHub API)
-- [ ] Website: page views, time on page (Google Analytics or Plausible)
-- [ ] Twitter: impressions, likes, retweets, link clicks (via API)
-- [ ] Reddit: upvotes, comments, link clicks
+### 3A Â· GitHub
+- [x] Auto-push product files to AyushPoo/Founder-Systems repo
+- [x] GitHub Actions CI/CD (deploy.yml) triggers Vercel on push to main
 
-### 5B · Dashboard
-- [ ] Build web dashboard (analytics.foundersystems.in or page on site)
-- [ ] Shows: all products, revenue per product, total revenue, traffic, best performers
-- [ ] Auto-refreshes via cron (daily pull from all APIs)
-- [ ] Weekly summary sent to Telegram every Monday morning
+### 3B Â· Website (foundersystems.in)
+- [x] Dynamic product pages via JSON files in public/products/
+- [x] New products auto-appear on site without code deploys
+- [x] Vercel auto-deploys on GitHub push
 
-### 5C · Learning Loop
-- [ ] Track which idea categories perform best
-- [ ] Feed top performers back into Ideas Fetcher ranking weights
-- [ ] Atlas stores learnings in Mem0/Qdrant for future planning decisions
+### 3C Â· Sales Platforms
+- [x] Product Publisher n8n workflow syncs to Gumroad + LemonSqueezy on product JSON push
+- [x] GitHub Actions product-sync.yml triggers n8n webhook on products/** changes
+- [ ] Instamojo â API not available, manual for now
 
 ---
 
-## ⚙️ PHASE 6 — Infrastructure & Reliability
+## â PHASE 4 â Marketing â COMPLETE
 
-- [ ] Set up proper CI/CD (GitHub Actions) for all deployments
-- [ ] Atlas crash loop permanently fixed + auto-restart with alerting
-- [ ] memory-server stability fix
-- [ ] All n8n workflows have error handlers — failures send alert to Telegram
-- [ ] Daily backup of n8n workflows to GitHub
-- [ ] Monitoring: uptime checks on all PM2 processes, alert if any go down
-- [ ] Secrets management — move all API keys to proper env files, not hardcoded
-- [ ] Document all API keys and where they're stored (internal doc, not public)
+### 4A Â· Content Generation
+- [x] Auto-generate platform-specific posts (Twitter/X, Reddit, LinkedIn)
+- [x] Marketing Agent Phase 5 â conversational post brainstorming via Telegram
 
----
-
-## 📊 Progress Tracker
-
-| Phase | Status | Blockers |
-|-------|--------|----------|
-| Phase 1 — Fix broken | ✅ Complete (5/5) | — |
-| Phase 2 — Core pipeline | 🟡 Partial | Sheets auth, broken builder |
-| Phase 3 — Deployment | 🔴 Not started | Need pipeline working first |
-| Phase 4 — Marketing | 🔴 Not started | Need deployment working |
-| Phase 5 — Analytics | 🔴 Not started | Need products live first |
-| Phase 6 — Infrastructure | 🟡 Partial | Atlas crashes, memory-server |
+### 4B Â· Auto-Posting
+- [x] 3 marketing workflows live
+- [x] Posts sent to Telegram for review with Post Now / Edit / Skip
+- [ ] Deep links for mobile approval (plan at docs/superpowers/plans/2026-03-28-mobile-posting-deep-links.md)
 
 ---
 
-## 🔑 Architecture Notes
-- **@Rayquabot** (n8n) = main FounderOS flow (ideas → plan → build)
+## â PHASE 5 â Analytics Dashboard â COMPLETE
+
+### 5A Â· Data Collection
+- [x] Gumroad + LemonSqueezy sales data (via API)
+- [x] Analytics API (port 3001, SQLite) serving data
+
+### 5B Â· Dashboard
+- [x] analytics.foundersystems.in (or equivalent) built
+- [x] Weekly summary sent to Telegram every Monday morning
+
+### 5C Â· Learning Loop
+- [x] Quality Gate Actions + learning loop built
+- [x] Atlas stores learnings in Qdrant for future planning
+
+---
+
+## â PHASE 6 â Infrastructure & Reliability â COMPLETE
+
+- [x] GitHub Actions CI/CD for all deployments (deploy.yml + product-sync.yml)
+- [x] auto-healer PM2 process â permanently fixes crash loops
+- [x] GCP VM decommissioned â all services consolidated on Azure
+- [x] All 29 n8n workflows wired to Error Handler â Telegram alerts
+- [x] Daily n8n Backup (2AM IST â GitHub)
+- [x] Health Monitor (5-min checks on n8n, website, analytics-api)
+- [x] Secrets documented in docs/internal/SECRETS-REFERENCE.md
+
+---
+
+## ð Progress Tracker
+
+| Phase | Status | Notes |
+|-------|--------|-------|
+| Phase 1 â Fix broken | â Complete | All blockers resolved |
+| Phase 2 â Core pipeline | ð¡ Partial | Builder types + Obsidian logging still TODO |
+| Phase 3 â Deployment | â Complete | GitHub â Vercel + Gumroad/LS sync live |
+| Phase 4 â Marketing | â Complete | 3 workflows live + Marketing Agent |
+| Phase 5 â Analytics | â Complete | Dashboard + weekly summary live |
+| Phase 6 â Infrastructure | â Complete | Error handling, backup, monitoring, CI/CD |
+
+---
+
+## ð Architecture Notes
+- **@Rayquabot** (n8n) = main FounderOS pipeline (ideas â plan â build â deploy)
 - **@Blasikenbot** (Atlas v3, Azure) = direct builds, brainstorming, autonomous tasks
-- **@AzureOCbackupbot** (OpenClaw Azure) = backup when Emergent credits low
 - Gemini Flash = cheap bulk work (ideas ranking, summarization)
-- GPT-5.3 Azure = quality work (planning, code gen, decisions)
+- GPT-5.3 Azure = quality work (planning, code gen, decisions) via LiteLLM port 4000
 - All products saved to Azure `/products/[name]/` before deploy
-- All product data logged in Obsidian under `06 - Products/`
+- All product data logged in Obsidian under `03 - Products/`
 - Do NOT deploy to foundersystems.in without Ayush's explicit approval
+- **No GCP VM** â everything runs on Azure VM (20.193.252.82)
