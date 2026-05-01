@@ -1,6 +1,6 @@
 # Workflow Index
 
-> Last synced: 2026-05-01 12:01 UTC (auto)
+> Last synced: 2026-05-01 13:00 UTC (auto)
 
 ## Active (37)
 - **Builder - Excel** `2fRABiuMQl9u2Yl1` - updated 2026-04-15
@@ -39,7 +39,7 @@
 - **Product Builder** `vo7WHaL6rq7yKRvm` - updated 2026-04-06
 - **Builder - Web App** `xiYFZhlToYLX9g4J` - updated 2026-04-15
 - **Builder - PowerPoint** `zHE9Y6RsPGcfn4dC` - updated 2026-04-15
-- **Get Idea Details** `zgJBIZS3qUxEwwtd` - updated 2026-04-06
+- **Get Idea Details** `zgJBIZS3qUxEwwtd` - updated 2026-05-01
 
 ## Inactive (15)
 - **_tmp_azure_audit3** `9MZ56GUnjnYqoiYK` - updated 2026-04-04
