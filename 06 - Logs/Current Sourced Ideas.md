@@ -2,44 +2,44 @@
 
 > Latest founder-sourceable products batch
 
-## 1. Postiz
+## 1. LaunchCut
 - Source: Product Hunt
-- Link: https://www.producthunt.com/products/postiz
+- Link: https://www.producthunt.com/products/launchcut-2
 - Score: 9
-- Why Replicable: AI can handle the content repurposing and scheduling logic; requires a standard social API integration and a lightweight calendar UI.
+- Why Replicable: AI-driven video clipping for launch content is highly replicable using video processing APIs and LLMs for highlight detection.
 
-## 2. Basedash Dashboard Agent
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/basedash
-- Score: 8
-- Why Replicable: Can be built using Text-to-SQL LLM prompts to generate reporting views from a database, wrapped in a simple dashboard UI.
-
-## 3. TrafficClaw
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/trafficclaw
-- Score: 7
-- Why Replicable: Combines traffic analytics APIs with an AI layer to provide lead-gen insights and traffic qualification.
-
-## 4. Marx Finance
+## 2. Marx Finance
 - Source: Product Hunt
 - Link: https://www.producthunt.com/products/marx-finance
 - Score: 7
-- Why Replicable: Financial models can be templated; AI can be used to customize calculations based on founder inputs in a spreadsheet-like interface.
+- Why Replicable: Financial models and trackers can be built as lightweight CRUD apps with AI-generated formula logic.
 
-## 5. Genspark for Word
+## 3. Postiz
 - Source: Product Hunt
-- Link: https://www.producthunt.com/products/genspark
-- Score: 6
-- Why Replicable: Standard LLM wrapper integration into a word processor plugin to help founders write GTM copy.
+- Link: https://www.producthunt.com/products/postiz
+- Score: 8
+- Why Replicable: Social media scheduling and repurposing tools are classic AI wrappers around platform APIs with AI copy generation.
 
-## 6. nudge
+## 4. TrafficClaw
 - Source: Product Hunt
-- Link: https://www.producthunt.com/products/nudge-26
-- Score: 6
-- Why Replicable: Simple planning/tracking logic using cron jobs and AI-generated personalized reminders.
+- Link: https://www.producthunt.com/products/trafficclaw
+- Score: 8
+- Why Replicable: Lead generation and qualification helpers typically rely on data scraping and AI filtering, which is easy to implement.
 
-## 7. Invite Only
+## 5. Basedash Dashboard Agent
 - Source: Product Hunt
-- Link: https://www.producthunt.com/products/invite-only
-- Score: 6
-- Why Replicable: Low-complexity lead qualification tool using a waitlist database and automated email triggers.
+- Link: https://www.producthunt.com/products/basedash
+- Score: 9
+- Why Replicable: Converting natural language to database queries/dashboards is a prime use case for LLMs combined with a charting library.
+
+## 6. MailToDock
+- Source: Product Hunt
+- Link: https://www.producthunt.com/products/mailtodock
+- Score: 7
+- Why Replicable: Email assistants for outreach can be replicated using email APIs and prompt engineering for personalization.
+
+## 7. VideoOS by Jupitrr AI
+- Source: Product Hunt
+- Link: https://www.producthunt.com/products/jupitrr
+- Score: 8
+- Why Replicable: AI video production for content distribution is replicable via generative video APIs and automated editing workflows.
