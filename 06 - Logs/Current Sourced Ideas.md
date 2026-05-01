@@ -2,44 +2,38 @@
 
 > Latest founder-sourceable products batch
 
-## 1. LaunchCut
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/launchcut-2
-- Score: 9
-- Why Replicable: AI-driven video clipping for launch content is highly replicable using video processing APIs and LLMs for highlight detection.
-
-## 2. Marx Finance
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/marx-finance
-- Score: 7
-- Why Replicable: Financial models and trackers can be built as lightweight CRUD apps with AI-generated formula logic.
-
-## 3. Postiz
+## 1. Postiz
 - Source: Product Hunt
 - Link: https://www.producthunt.com/products/postiz
-- Score: 8
-- Why Replicable: Social media scheduling and repurposing tools are classic AI wrappers around platform APIs with AI copy generation.
+- Score: 9
+- Why Replicable: AI can automate content generation and scheduling via social media APIs with a simple dashboard.
 
-## 4. TrafficClaw
+## 2. Genspark for Word
+- Source: Product Hunt
+- Link: https://www.producthunt.com/products/genspark
+- Score: 8
+- Why Replicable: Essentially a specialized LLM wrapper for document creation and copywriting.
+
+## 3. TrafficClaw
 - Source: Product Hunt
 - Link: https://www.producthunt.com/products/trafficclaw
 - Score: 8
-- Why Replicable: Lead generation and qualification helpers typically rely on data scraping and AI filtering, which is easy to implement.
+- Why Replicable: Lead generation and traffic tools can be replicated using AI agents for scraping and qualification.
 
-## 5. Basedash Dashboard Agent
+## 4. LaunchCut
 - Source: Product Hunt
-- Link: https://www.producthunt.com/products/basedash
-- Score: 9
-- Why Replicable: Converting natural language to database queries/dashboards is a prime use case for LLMs combined with a charting library.
-
-## 6. MailToDock
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/mailtodock
+- Link: https://www.producthunt.com/products/launchcut-2
 - Score: 7
-- Why Replicable: Email assistants for outreach can be replicated using email APIs and prompt engineering for personalization.
+- Why Replicable: AI video clipping and editing tools for product launches are now highly accessible via APIs.
 
-## 7. VideoOS by Jupitrr AI
+## 5. Miaw AI secretary
 - Source: Product Hunt
-- Link: https://www.producthunt.com/products/jupitrr
+- Link: https://www.producthunt.com/products/miaw-ai-secretary
 - Score: 8
-- Why Replicable: AI video production for content distribution is replicable via generative video APIs and automated editing workflows.
+- Why Replicable: AI secretaries are based on agentic LLM workflows for scheduling and planning.
+
+## 6. Adoptly
+- Source: Product Hunt
+- Link: https://www.producthunt.com/products/adoptly
+- Score: 7
+- Why Replicable: User onboarding flows can be generated and managed using low-code AI components.
