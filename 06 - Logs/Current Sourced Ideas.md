@@ -2,79 +2,79 @@
 
 > Latest founder-sourceable products batch
 
-## 1. WooTrack - POAS Plugin for WooCommerce
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/wootrack-poas-plugin-for-woocommerce
-- Score: 92
-- Traction: Product Hunt current feed rank #32
-- Bucket: founder_ops
-- Complexity: low
-- Feasibility Score: 9
-- Build Scope: A plugin that pulls sales and ad spend data to calculate a specific ROI metric via a dashboard.
-- Why Replicable: It is a specialized calculator/reporting tool for a specific metric (Profit on Ad Spend) within a popular ecosystem (WooCommerce). The logic is based on standard financial formulas combined with API data.
-
-## 2. Genspark for Word
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/genspark
-- Score: 88
-- Traction: Product Hunt current feed rank #5
-- Bucket: founder_gtm
-- Complexity: low
-- Feasibility Score: 9
-- Build Scope: An LLM-powered writing assistant integrated via API into a document editor.
-- Why Replicable: This is a classic AI wrapper integrating a Large Language Model (LLM) into a word processor for copywriting and content generation.
-
-## 3. Marx Finance
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/marx-finance
-- Score: 85
-- Traction: Product Hunt current feed rank #16
-- Bucket: founder_ops
-- Complexity: low
-- Feasibility Score: 8
-- Build Scope: A financial dashboard for tracking revenue, expenses, and forecasting based on user inputs.
-- Why Replicable: Financial tracking and modeling tools are essentially structured dashboards with mathematical logic and data visualization.
-
-## 4. LaunchCut
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/launchcut-2
-- Score: 82
-- Traction: Product Hunt current feed rank #19
-- Bucket: founder_gtm
-- Complexity: low
-- Feasibility Score: 8
-- Build Scope: A launch planning tool with templates for content distribution across different platforms.
-- Why Replicable: Launch tools are typically checklists, scheduling helpers, and content distribution templates that can be easily automated.
-
-## 5. Postiz
+## 1. Postiz
 - Source: Product Hunt
 - Link: https://www.producthunt.com/products/postiz
-- Score: 78
-- Traction: Product Hunt current feed rank #10
+- Score: 9
+- Traction: Product Hunt current feed rank #1
 - Bucket: founder_gtm
 - Complexity: medium
-- Feasibility Score: 8
-- Build Scope: A content distribution helper that schedules and posts content via social media APIs.
-- Why Replicable: Social media scheduling is a well-understood workflow using platform APIs (X, LinkedIn, etc.) and a queueing system.
+- Feasibility Score: 9
+- Build Scope: AI-powered social media scheduler
+- Why Replicable: AI wrapper for social media APIs with a scheduling and content distribution layer
 
-## 6. Basedash Dashboard Agent
+## 2. Basedash Dashboard Agent
 - Source: Product Hunt
 - Link: https://www.producthunt.com/products/basedash
-- Score: 75
+- Score: 8
 - Traction: Product Hunt current feed rank #22
 - Bucket: founder_ops
 - Complexity: medium
-- Feasibility Score: 7
-- Build Scope: An AI-driven reporting tool that generates database visualizations from natural language prompts.
-- Why Replicable: It utilizes the 'Text-to-SQL' pattern, where an AI wrapper translates natural language into database queries to generate a lightweight dashboard.
+- Feasibility Score: 8
+- Build Scope: AI data reporting agent
+- Why Replicable: Text-to-SQL AI interface that converts natural language into database reports
 
-## 7. TrafficClaw
+## 3. WooTrack - POAS Plugin for WooCommerce
+- Source: Product Hunt
+- Link: https://www.producthunt.com/products/wootrack-poas-plugin-for-woocommerce
+- Score: 8
+- Traction: Product Hunt current feed rank #31
+- Bucket: founder_ops
+- Complexity: low
+- Feasibility Score: 10
+- Build Scope: E-commerce financial tracker
+- Why Replicable: Simple calculation tool for Profit on Ad Spend (POAS) using store API data
+
+## 4. Invite Only
+- Source: Product Hunt
+- Link: https://www.producthunt.com/products/invite-only
+- Score: 8
+- Traction: Product Hunt current feed rank #35
+- Bucket: founder_gtm
+- Complexity: low
+- Feasibility Score: 10
+- Build Scope: Lead qualification/scarcity tool
+- Why Replicable: Waitlist management tool with referral and invite-only logic
+
+## 5. doola MCP for US LLC Formation
+- Source: Product Hunt
+- Link: https://www.producthunt.com/products/doola-mcp
+- Score: 7
+- Traction: Product Hunt current feed rank #20
+- Bucket: founder_ops
+- Complexity: low
+- Feasibility Score: 9
+- Build Scope: AI connector for business formation
+- Why Replicable: MCP server implementation providing structured company formation logic to LLMs
+
+## 6. TrafficClaw
 - Source: Product Hunt
 - Link: https://www.producthunt.com/products/trafficclaw
-- Score: 72
-- Traction: Product Hunt current feed rank #18
+- Score: 7
+- Traction: Product Hunt current feed rank #14
 - Bucket: founder_gtm
 - Complexity: medium
-- Feasibility Score: 7
-- Build Scope: A lead-gen helper that identifies traffic patterns or potential leads using third-party data APIs.
-- Why Replicable: Lead generation and traffic analysis tools typically wrap around SEO APIs or web scraping logic to provide actionable lists.
+- Feasibility Score: 8
+- Build Scope: Traffic attribution dashboard
+- Why Replicable: Analytics wrapper focused on traffic source attribution and lead-gen tracking
+
+## 7. LaunchCut
+- Source: Product Hunt
+- Link: https://www.producthunt.com/products/launchcut-2
+- Score: 7
+- Traction: Product Hunt current feed rank #19
+- Bucket: founder_gtm
+- Complexity: low
+- Feasibility Score: 9
+- Build Scope: Launch planning helper
+- Why Replicable: Structured workflow tool for managing product launch checklists and assets
