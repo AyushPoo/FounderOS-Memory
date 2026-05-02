@@ -2,79 +2,79 @@
 
 > Latest founder-sourceable products batch
 
-## 1. Postiz
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/postiz
-- Score: 9
-- Traction: Product Hunt current feed rank #19
-- Bucket: founder_gtm
-- Complexity: low
-- Feasibility Score: 9
-- Build Scope: A dashboard connecting to social APIs with a calendar view and a basic prompt-based content generator.
-- Why Replicable: Social media scheduling and distribution tools are primarily wrappers around official APIs (X, LinkedIn, Facebook) combined with a scheduling database.
-
-## 2. TrafficClaw
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/trafficclaw
+## 1. akveo/ngx-admin
+- Source: GitHub
+- Link: https://github.com/akveo/ngx-admin
 - Score: 8
-- Traction: Product Hunt current feed rank #10
-- Bucket: founder_gtm
-- Complexity: medium
-- Feasibility Score: 8
-- Build Scope: An AI-powered lead scraper that identifies potential customers and exports them to a CSV or CRM.
-- Why Replicable: Lead generation and traffic analysis tools typically rely on SEO APIs or web scraping frameworks to identify target audiences.
-
-## 3. ElevenLabs Agent Templates
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/elevenlabs-agent-templates
-- Score: 9
-- Traction: Product Hunt current feed rank #32
+- Traction: 25756 stars, 7932 forks
 - Bucket: founder_ops
 - Complexity: low
-- Feasibility Score: 10
-- Build Scope: A curated directory of pre-configured AI agent prompts and settings tailored for founder workflows.
-- Why Replicable: Template libraries are high-value, low-code products consisting of curated prompt configurations and system settings.
+- Feasibility Score: 8
+- Build Scope: Develop a high-quality, customizable Angular/React dashboard theme with pre-built components for founders.
+- Why Replicable: It is a UI template for an admin dashboard; replicable by creating a modern, AI-driven dashboard boilerplate for founders.
 
-## 4. Genspark for Word
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/genspark
-- Score: 8
-- Traction: Product Hunt current feed rank #28
-- Bucket: founder_gtm
+## 2. ColorlibHQ/AdminLTE
+- Source: GitHub
+- Link: https://github.com/ColorlibHQ/AdminLTE
+- Score: 9
+- Traction: 45376 stars, 18239 forks
+- Bucket: founder_ops
 - Complexity: low
-- Feasibility Score: 9
-- Build Scope: A Word add-in that provides specialized copy-writing prompts for founder pitch decks and outreach emails.
-- Why Replicable: AI writing assistants for specific software (like Word) are essentially LLM wrappers utilizing the software's add-in SDK.
+- Feasibility Score: 8
+- Build Scope: Build a set of clean, responsive HTML/CSS templates for backend management interfaces.
+- Why Replicable: A Bootstrap-based admin template; easily replicable as a lightweight, modern CSS/HTML toolkit for operational dashboards.
 
-## 5. Marx Finance
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/marx-finance
+## 3. gethomepage/homepage
+- Source: GitHub
+- Link: https://github.com/gethomepage/homepage
 - Score: 7
-- Traction: Product Hunt current feed rank #12
+- Traction: 29846 stars, 1892 forks
 - Bucket: founder_ops
 - Complexity: medium
-- Feasibility Score: 8
-- Build Scope: A financial health dashboard for early-stage founders to track burn rate and runway.
-- Why Replicable: Financial trackers and models can be built using standard accounting logic and a lightweight frontend dashboard.
+- Feasibility Score: 7
+- Build Scope: Create a self-hostable dashboard with simple API widgets for common founder tools (Stripe, Google Analytics, etc.).
+- Why Replicable: A customizable startpage; can be replicated as a curated link/API dashboard for founder productivity.
 
-## 6. LaunchCut
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/launchcut-2
-- Score: 7
-- Traction: Product Hunt current feed rank #22
+## 4. glanceapp/glance
+- Source: GitHub
+- Link: https://github.com/glanceapp/glance
+- Score: 8
+- Traction: 33912 stars, 1309 forks
+- Bucket: founder_ops
+- Complexity: low
+- Feasibility Score: 8
+- Build Scope: Build a single-page application that aggregates news feeds and uses an LLM to summarize updates.
+- Why Replicable: An RSS/feed aggregator dashboard; replicable as an AI-powered industry news monitor for founders.
+
+## 5. koala73/worldmonitor
+- Source: GitHub
+- Link: https://github.com/koala73/worldmonitor
+- Score: 8
+- Traction: 53206 stars, 8538 forks
+- Bucket: founder_ops
+- Complexity: medium
+- Feasibility Score: 7
+- Build Scope: Create an AI-driven intelligence dashboard that tracks specific niches or competitors for a founder.
+- Why Replicable: AI-powered news aggregation dashboard; highly replicable using LLM APIs for filtering and categorization.
+
+## 6. Lissy93/dashy
+- Source: GitHub
+- Link: https://github.com/Lissy93/dashy
+- Score: 8
+- Traction: 24918 stars, 1822 forks
+- Bucket: founder_ops
+- Complexity: low
+- Feasibility Score: 8
+- Build Scope: Develop a drag-and-drop widget interface for personal productivity and tool organization.
+- Why Replicable: A widget-based personal dashboard; replicable as a lightweight tool for tracking founder KPIs.
+
+## 7. santifer/career-ops
+- Source: GitHub
+- Link: https://github.com/santifer/career-ops
+- Score: 8
+- Traction: 41673 stars, 8648 forks
 - Bucket: founder_gtm
 - Complexity: medium
 - Feasibility Score: 7
-- Build Scope: A tool that takes a long product demo video and uses AI to identify and cut 'highlight' clips for social media.
-- Why Replicable: Short-form video clipping for launches can be automated using cloud video processing APIs like Mux or Cloudinary.
-
-## 7. Adoptly
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/adoptly
-- Score: 7
-- Traction: Product Hunt current feed rank #33
-- Bucket: founder_gtm
-- Complexity: medium
-- Feasibility Score: 8
-- Build Scope: A lightweight onboarding flow builder that qualifies leads based on their initial interaction with a product.
-- Why Replicable: User onboarding and adoption tools are essentially logic-based survey and flow builders.
+- Build Scope: Build an AI wrapper that scrapes a target site and matches profiles to a set of specific skill requirements.
+- Why Replicable: AI job search system; replicable as a B2B lead-gen tool for founders searching for specific client profiles.
