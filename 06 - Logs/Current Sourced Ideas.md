@@ -10,60 +10,49 @@
 - Bucket: founder_ops
 - Complexity: low
 - Feasibility Score: 9
-- Build Scope: API integration layer + Next.js dashboard with charting libraries.
-- Why Replicable: It is a usage analytics dashboard for AI agents; it can be replicated by creating a middleware that captures LLM API calls and displays them in a lightweight frontend dashboard.
+- Build Scope: A lightweight dashboard that connects to AI agent log files or APIs to visualize usage metrics and performance.
+- Why Replicable: It is essentially a specialized analytics dashboard that parses logs from known AI coding agents; this can be replicated by building a dashboard that integrates with the APIs or log outputs of those agents.
 
-## 2. Litlyx/litlyx
+## 2. EKKOLearnAI/hermes-web-ui
+- Source: GitHub
+- Link: https://github.com/EKKOLearnAI/hermes-web-ui
+- Score: 7
+- Traction: 3269 stars, 405 forks
+- Bucket: founder_ops
+- Complexity: medium
+- Feasibility Score: 7
+- Build Scope: A management console for AI agents including usage tracking and API configuration for various messaging channels.
+- Why Replicable: It functions as a management UI for AI agents. Replicating the 'usage analytics' and 'channel configuration' parts as a standalone founder tool for managing bot deployment is highly feasible.
+
+## 3. Litlyx/litlyx
 - Source: GitHub
 - Link: https://github.com/Litlyx/litlyx
-- Score: 8
+- Score: 7
 - Traction: 1713 stars, 108 forks
 - Bucket: founder_ops
 - Complexity: medium
-- Feasibility Score: 8
-- Build Scope: JS tracking snippet + time-series database + dashboard UI.
-- Why Replicable: An alternative to Google Analytics; replicable as a lightweight event-tracking script and a simplified data visualization dashboard.
+- Feasibility Score: 7
+- Build Scope: A simplified, self-hostable analytics dashboard that uses AI to generate reports from event data.
+- Why Replicable: While a full GA alternative is complex, a 'simple AI-powered dashboard' for basic founder metrics is a classic AI wrapper opportunity using a time-series database and an LLM for querying.
 
-## 3. Invite Only
+## 4. ElevenLabs Agent Templates
 - Source: Product Hunt
-- Link: https://www.producthunt.com/products/invite-only
+- Link: https://www.producthunt.com/products/elevenlabs-agent-templates
 - Score: 9
-- Traction: Product Hunt current feed rank #29
-- Bucket: founder_gtm
+- Traction: Product Hunt current feed rank #37
+- Bucket: founder_ops
 - Complexity: low
 - Feasibility Score: 10
-- Build Scope: Landing page generator + email database + referral link logic.
-- Why Replicable: A waitlist/invite management tool is a standard CRUD application focused on email capture and referral tracking.
+- Build Scope: A curated library of pre-configured AI agent templates that founders can clone for specific business functions.
+- Why Replicable: Templates are one of the easiest founder tools to replicate; it requires curating a high-quality library of prompts and configuration settings for specific use cases.
 
-## 4. Postiz
+## 5. Postiz
 - Source: Product Hunt
 - Link: https://www.producthunt.com/products/postiz
 - Score: 8
-- Traction: Product Hunt current feed rank #19
+- Traction: Product Hunt current feed rank #26
 - Bucket: founder_gtm
 - Complexity: medium
 - Feasibility Score: 8
-- Build Scope: Auth flow + content calendar UI + Cron-based API poster.
-- Why Replicable: Social media content distribution can be built using a scheduler and official social media APIs (X, LinkedIn, etc.).
-
-## 5. Marx Finance
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/marx-finance
-- Score: 9
-- Traction: Product Hunt current feed rank #22
-- Bucket: founder_ops
-- Complexity: low
-- Feasibility Score: 9
-- Build Scope: Input-driven financial model with dynamic calculations and chart outputs.
-- Why Replicable: Financial tools for founders are typically interactive calculators or structured templates based on financial formulas.
-
-## 6. DESIGN.md by Google Stitch
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/design-md-by-google-stitch
-- Score: 8
-- Traction: Product Hunt current feed rank #3
-- Bucket: founder_ops
-- Complexity: low
-- Feasibility Score: 10
-- Build Scope: Markdown template engine + structured input form to generate .md files.
-- Why Replicable: This is a documentation/planning template system that can be replicated as a Markdown generator or a structured editor.
+- Build Scope: A lightweight content distribution tool that schedules posts and uses AI to adapt content for different social channels.
+- Why Replicable: Social media scheduling and distribution tools are highly replicable as AI wrappers that automate content drafting and scheduling via official platform APIs.
