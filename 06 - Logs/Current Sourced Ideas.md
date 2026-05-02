@@ -2,79 +2,68 @@
 
 > Latest founder-sourceable products batch
 
-## 1. Invite Only
+## 1. f/agentlytics
+- Source: GitHub
+- Link: https://github.com/f/agentlytics
+- Score: 8
+- Traction: 497 stars, 65 forks
+- Bucket: founder_ops
+- Complexity: low
+- Feasibility Score: 9
+- Build Scope: API integration layer + Next.js dashboard with charting libraries.
+- Why Replicable: It is a usage analytics dashboard for AI agents; it can be replicated by creating a middleware that captures LLM API calls and displays them in a lightweight frontend dashboard.
+
+## 2. Litlyx/litlyx
+- Source: GitHub
+- Link: https://github.com/Litlyx/litlyx
+- Score: 8
+- Traction: 1713 stars, 108 forks
+- Bucket: founder_ops
+- Complexity: medium
+- Feasibility Score: 8
+- Build Scope: JS tracking snippet + time-series database + dashboard UI.
+- Why Replicable: An alternative to Google Analytics; replicable as a lightweight event-tracking script and a simplified data visualization dashboard.
+
+## 3. Invite Only
 - Source: Product Hunt
 - Link: https://www.producthunt.com/products/invite-only
-- Score: 92
+- Score: 9
 - Traction: Product Hunt current feed rank #29
 - Bucket: founder_gtm
 - Complexity: low
 - Feasibility Score: 10
-- Build Scope: A single-page app with a database for email collection and a referral system to gamify the waitlist.
-- Why Replicable: Simple landing page logic with a waitlist database and referral tracking; highly repeatable pattern for early-stage GTM.
-
-## 2. ElevenLabs Agent Templates
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/elevenlabs-agent-templates
-- Score: 88
-- Traction: Product Hunt current feed rank #47
-- Bucket: founder_ops
-- Complexity: low
-- Feasibility Score: 9
-- Build Scope: A curated directory of prompt templates and configuration settings for AI agents with a copy-to-clipboard function.
-- Why Replicable: Templatized prompt libraries and configuration files can be easily wrapped in a curated discovery gallery.
-
-## 3. Basedash Dashboard Agent
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/basedash
-- Score: 85
-- Traction: Product Hunt current feed rank #34
-- Bucket: founder_ops
-- Complexity: medium
-- Feasibility Score: 8
-- Build Scope: An AI wrapper using an LLM to translate natural language to SQL, connected to a lightweight charting library.
-- Why Replicable: AI-to-SQL wrapper that generates visualizations based on natural language queries over a database.
+- Build Scope: Landing page generator + email database + referral link logic.
+- Why Replicable: A waitlist/invite management tool is a standard CRUD application focused on email capture and referral tracking.
 
 ## 4. Postiz
 - Source: Product Hunt
 - Link: https://www.producthunt.com/products/postiz
-- Score: 84
-- Traction: Product Hunt current feed rank #21
+- Score: 8
+- Traction: Product Hunt current feed rank #19
 - Bucket: founder_gtm
 - Complexity: medium
-- Feasibility Score: 7
-- Build Scope: A scheduler connected to X/LinkedIn APIs with an LLM integration for content drafting and repurposing.
-- Why Replicable: Combines API-based social posting with AI generation; a classic 'AI-wrapper' for content distribution.
+- Feasibility Score: 8
+- Build Scope: Auth flow + content calendar UI + Cron-based API poster.
+- Why Replicable: Social media content distribution can be built using a scheduler and official social media APIs (X, LinkedIn, etc.).
 
-## 5. f/agentlytics
-- Source: GitHub
-- Link: https://github.com/f/agentlytics
-- Score: 82
-- Traction: 497 stars, 65 forks
+## 5. Marx Finance
+- Source: Product Hunt
+- Link: https://www.producthunt.com/products/marx-finance
+- Score: 9
+- Traction: Product Hunt current feed rank #22
 - Bucket: founder_ops
 - Complexity: low
-- Feasibility Score: 8
-- Build Scope: A dashboard that ingests JSON logs from AI tools (Cursor, Claude Code) to visualize token usage and productivity.
-- Why Replicable: Specialized analytics for a specific niche (AI coding agents) can be built by parsing tool logs into a dashboard.
+- Feasibility Score: 9
+- Build Scope: Input-driven financial model with dynamic calculations and chart outputs.
+- Why Replicable: Financial tools for founders are typically interactive calculators or structured templates based on financial formulas.
 
-## 6. LaunchCut
+## 6. DESIGN.md by Google Stitch
 - Source: Product Hunt
-- Link: https://www.producthunt.com/products/launchcut-2
-- Score: 80
-- Traction: Product Hunt current feed rank #20
-- Bucket: founder_gtm
-- Complexity: low
-- Feasibility Score: 8
-- Build Scope: A project management board for product launches with integrated AI generators for GTM copy.
-- Why Replicable: Checklist-based workflow tool with AI assistance for generating launch assets (emails, tweets, descriptions).
-
-## 7. doola MCP for US LLC Formation
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/doola-mcp
-- Score: 78
-- Traction: Product Hunt current feed rank #40
+- Link: https://www.producthunt.com/products/design-md-by-google-stitch
+- Score: 8
+- Traction: Product Hunt current feed rank #3
 - Bucket: founder_ops
-- Complexity: medium
-- Feasibility Score: 8
-- Build Scope: A standardized MCP server implementation that connects an LLM to company formation APIs and documentation.
-- Why Replicable: Utilizes the Model Context Protocol (MCP) to turn a service API into an AI-driven workflow tool for company setup.
+- Complexity: low
+- Feasibility Score: 10
+- Build Scope: Markdown template engine + structured input form to generate .md files.
+- Why Replicable: This is a documentation/planning template system that can be replicated as a Markdown generator or a structured editor.
