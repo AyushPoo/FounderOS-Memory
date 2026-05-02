@@ -2,44 +2,46 @@
 
 > Latest founder-sourceable products batch
 
-## 1. TrafficClaw
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/trafficclaw
-- Score: 9
-- Why Replicable: Traffic and lead generation tools are typically built using AI agents for scraping and outreach automation with a simple dashboard.
-
-## 2. Postiz
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/postiz
-- Score: 8
-- Why Replicable: Social media scheduling and distribution tools are prime candidates for AI-driven content repurposing and API-based posting wrappers.
-
-## 3. Genspark for Word
+## 1. Genspark for Word
 - Source: Product Hunt
 - Link: https://www.producthunt.com/products/genspark
-- Score: 7
-- Why Replicable: AI writing assistants integrated into existing word processors are essentially LLM wrappers with a plugin UI.
+- Score: 88
+- Traction: Product Hunt current feed rank #1
+- Bucket: founder_gtm
+- Complexity: low
+- Feasibility Score: 9
+- Build Scope: AI-powered copywriting tool for founders to generate GTM documents and proposals directly in Word.
+- Why Replicable: It is essentially an AI writing assistant wrapper integrated into a document editor. This can be replicated using LLM APIs (OpenAI/Anthropic) and the Microsoft Word Add-in SDK.
 
-## 4. Hera Launch
+## 2. LaunchCut
 - Source: Product Hunt
-- Link: https://www.producthunt.com/products/hera-6
-- Score: 7
-- Why Replicable: Launch helpers usually consist of checklists, templates, and AI-generated copy, making them low-complexity to build.
+- Link: https://www.producthunt.com/products/launchcut-2
+- Score: 85
+- Traction: Product Hunt current feed rank #19
+- Bucket: founder_gtm
+- Complexity: low
+- Feasibility Score: 9
+- Build Scope: A targeted AI generator for product launch assets, focusing on conversion-optimized copy for founders.
+- Why Replicable: Likely a specialized prompt-engineering wrapper for product launch copy, emails, and social posts. Extremely replicable as a lightweight AI tool.
 
-## 5. doola MCP for US LLC Formation
+## 3. Marx Finance
 - Source: Product Hunt
-- Link: https://www.producthunt.com/products/doola-mcp
-- Score: 6
-- Why Replicable: While company formation is complex, an MCP (Model Context Protocol) tool is an AI interface that guides users through planning and requirements.
+- Link: https://www.producthunt.com/products/marx-finance
+- Score: 78
+- Traction: Product Hunt current feed rank #16
+- Bucket: founder_ops
+- Complexity: low
+- Feasibility Score: 9
+- Build Scope: A lightweight financial reporting tool for founders to track burn rate, runway, and revenue projections.
+- Why Replicable: Financial reporting and modeling for startups typically involve a set of standard calculations and a dashboard UI. Can be built as a specialized financial tracker.
 
-## 6. Basedash Dashboard Agent
+## 4. Basedash Dashboard Agent
 - Source: Product Hunt
 - Link: https://www.producthunt.com/products/basedash
-- Score: 8
-- Why Replicable: AI-powered dashboards that translate natural language to database queries are highly replicable using LLMs and standard BI components.
-
-## 7. VideoOS by Jupitrr AI
-- Source: Product Hunt
-- Link: https://www.producthunt.com/products/jupitrr
-- Score: 7
-- Why Replicable: AI video creation for marketing is a booming low-ticket sector utilizing generative video APIs and simple editing templates.
+- Score: 70
+- Traction: Product Hunt current feed rank #22
+- Bucket: founder_ops
+- Complexity: medium
+- Feasibility Score: 7
+- Build Scope: An AI-powered internal dashboard that allows founders to query their database using plain English for operational reporting.
+- Why Replicable: The 'Agent' part is a Natural Language to SQL wrapper. While DB connectivity requires care, the core value is the AI interface for data reporting.
