@@ -1,6 +1,6 @@
 # Workflow Index
 
-> Last synced: 2026-05-03 06:00 UTC (auto)
+> Last synced: 2026-05-03 07:00 UTC (auto)
 
 ## Active (37)
 - **Builder - Excel** `2fRABiuMQl9u2Yl1` - updated 2026-04-15
@@ -17,7 +17,7 @@
 - **Marketing Engine** `AdIIHzlm87ebMfp9` - updated 2026-04-05
 - **Mem0 memories** `BkmdYttcq5lNsyfN` - updated 2026-03-20
 - **Builder - Landing Page** `DRG4H5PvSNqIpIZm` - updated 2026-04-15
-- **Founder Spec Generator API** `FsSpecGenApi001` - updated 2026-05-02
+- **Founder Spec Generator API** `FsSpecGenApi001` - updated 2026-05-03
 - **Post Generator - Marketing** `IlEp1rBngL7o5EZi` - updated 2026-04-06
 - **_tmp_api_path** `L8WFtqHk0rmmRLuK` - updated 2026-04-02
 - **Analytics Weekly Summary** `NcdjFfhrCKhk6X5r` - updated 2026-04-03
