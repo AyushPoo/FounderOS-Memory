@@ -3,8 +3,15 @@
 > Last synced: 2026-05-03 18:00 UTC (auto)
 
 ## Last 24h Errors
-_No errors in last 24h_
+- **Ideas Fetcher**: 1 error(s)
+- **Founder Spec Generator API**: 3 error(s)
+- **🔒 Daily n8n Backup → GitHub**: 1 error(s)
 
 ## Recent Error Log
 | Time | Workflow | Status |
 |------|----------|--------|
+| 2026-05-03T12:42 | Ideas Fetcher | error |
+| 2026-05-03T11:31 | Founder Spec Generator API | error |
+| 2026-05-03T11:31 | Founder Spec Generator API | error |
+| 2026-05-03T11:31 | Founder Spec Generator API | error |
+| 2026-05-03T00:30 | 🔒 Daily n8n Backup → GitHub | error |
