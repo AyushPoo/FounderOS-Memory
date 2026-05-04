@@ -1,19 +1,10 @@
 # Error Log
 
-> Last synced: 2026-05-04 10:00 UTC (auto)
+> Last synced: 2026-05-04 11:00 UTC (auto)
 
 ## Last 24h Errors
-- **Analytics Weekly Summary**: 1 error(s)
-- **🔒 Daily n8n Backup → GitHub**: 1 error(s)
-- **Ideas Fetcher**: 1 error(s)
-- **Founder Spec Generator API**: 3 error(s)
+_No errors in last 24h_
 
 ## Recent Error Log
 | Time | Workflow | Status |
 |------|----------|--------|
-| 2026-05-04T07:30 | Analytics Weekly Summary | error |
-| 2026-05-04T00:30 | 🔒 Daily n8n Backup → GitHub | error |
-| 2026-05-03T12:42 | Ideas Fetcher | error |
-| 2026-05-03T11:31 | Founder Spec Generator API | error |
-| 2026-05-03T11:31 | Founder Spec Generator API | error |
-| 2026-05-03T11:31 | Founder Spec Generator API | error |
