@@ -1,44 +1,21 @@
 # Product Outcomes
 
-> Last updated: 2026-03-23 by co-founder agent
+Last refreshed: `2026-05-10`
 
-## Shipped Products
+## Current live product/system surfaces
 
-| Product | Type | Live URL | Status |
-|---------|------|----------|--------|
-| Pomodoro Timer | Web App (HTML) | https://foundersystems.in/tools/pomodoro-timer/ | Live |
-| Startup Cost Calculator | Web App (HTML) | https://foundersystems.in/tools/startup-cost-calculator/ | Live |
+| Surface | Status | Notes |
+|---------|--------|-------|
+| `foundersystems.in` | Live | Main Founder Systems public surface |
+| `promptdeck.foundersystems.in` | Live | PromptDeck product frontend |
+| Founder Systems shared API | Live | Auth, payments, entitlements |
+| PromptDeck backend stack | Live | AWS backend + Open Design + legacy split routes |
+| `n8n` | Live | Internal automation surface with public admin UI |
+| `openclaw` | Live | Internal/ops tool surface |
+| `paperclip` | Live | Internal/ops tool surface |
 
-## Deployment Pipeline (LIVE as of 2026-03-23)
+## Important note
 
-```
-OpenCode builds product
-      |
-      v
-~/products/<name>/index.html  (Azure VM)
-      |
-      v
-~/founder-os/builder/deploy.sh <name>
-      |
-      v
-GitHub: AyushPoo/Founder-Systems
-public/tools/<name>/index.html
-      |
-      v
-Vercel auto-deploy (~60 seconds)
-      |
-      v
-https://foundersystems.in/tools/<name>/
-```
+This page is now focused on live system outcomes, not on stale Azure-era deployment mechanics.
 
-## How To Deploy a New Product
-```bash
-ssh ayush@20.193.252.82
-~/founder-os/builder/deploy.sh <product-folder-name>
-```
-Or Atlas can run this via ssh_azure tool.
-
-## Next Steps
-- Add products to the foundersystems.in catalog page (ProductDetail.jsx)
-- Set up Gumroad/payment links for new tools
-- Automate deploy.sh call at end of every build
+Exact SKU-level product copy, pricing, and website catalog details should be read from the active application repos before being edited here manually.

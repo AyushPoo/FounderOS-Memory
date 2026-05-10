@@ -1,120 +1,79 @@
 # Architecture Overview
 
-> Last updated: 2026-03-23 by co-founder agent
+Last refreshed: `2026-05-10`
 
-## Infrastructure
+## Production topology
 
-### GCP VM (34.14.219.64)
-- **OS:** Debian Linux
-- **Disk:** 30GB total, 22GB used, 6.3GB free (78%)
-- **User:** ayushpoojary1
-- **Process Manager:** PM2
-- **n8n:** Running at https://34.14.219.64.nip.io (uptime: stable, 2 restarts total)
-- **Node.js:** v22.22.1
+```text
+Vercel
+  foundersystems.in
+  promptdeck.foundersystems.in
+        |
+        v
+AWS EC2 52.87.13.200
+  nginx :80/:443
+    |- api.foundersystems.in              -> founder-systems-api.service   -> 127.0.0.1:8010
+    |- promptdeck-api.foundersystems.in   -> promptdeck-api.service        -> 127.0.0.1:8011
+    |- legacy PromptDeck routes           -> promptdeck-legacy.service     -> 127.0.0.1:8090
+    |- n8n.foundersystems.in              -> n8n (PM2)                     -> :5678
+    |- openclaw.foundersystems.in         -> openclaw-gateway              -> :7890
+    `- paperclip.foundersystems.in        -> paperclip (PM2)               -> 127.0.0.1:3100
 
-### Azure VM (20.193.252.82)
-- **OS:** Ubuntu Linux
-- **Disk:** 29GB total, 4GB used, 25GB free (15%) — plenty of headroom
-- **User:** ayush
-- **RAM:** 1.9GB — avoid running heavy processes simultaneously
-- **Process Manager:** PM2
-
-### Key Paths — GCP
-```
-/home/ayushpoojary1/
-├── .n8n/                         # n8n data
-└── founder-os/
-    ├── builder/                  # 8.6MB — build orchestration
-    ├── context/                  # 8KB — skill registry
-    ├── knowledge/                # 20KB
-    ├── skill-repos/              # 42MB — cloned skill repos
-    └── skills/                   # 484MB — 108 skill folders
+AWS sidecars
+  Postgres 18-main                        -> 127.0.0.1:5432
+  Open Design daemon (Docker)             -> 127.0.0.1:7456
+  Qdrant (Docker)                         -> :6333
+  LiteLLM proxy (PM2)                     -> :4000
 ```
 
-### Key Paths — Azure
-```
-/home/ayush/
-├── .env                          # All secrets/API keys
-├── founder-os/
-│   ├── agent/                    # Atlas v3 Telegram bot
-│   │   ├── main.py
-│   │   ├── models.py             # Multi-model router (GPT-5.3, Grok, Llama)
-│   │   ├── tools.py              # 20 tools (SSH, Mem0, n8n, GitHub, web, etc.)
-│   │   ├── state/                # agent_state.json, conversations.json
-│   │   └── venv/
-│   └── builder/                  # Build session context
-│       ├── PRIMER.md             # Current build state
-│       ├── HINDSIGHT.md          # Lessons learned
-│       ├── CLAUDE.md             # Claude-specific instructions
-│       └── FounderOS-Memory/     # Vault mirror
-└── products/
-    ├── pomodoro-timer/           # index.html — SHIPPED
-    ├── startup-cost-calculator/  # index.html — SHIPPED
-    └── serve.py                  # Static file server (port 3000)
-```
+## Live frontends
 
-### External Services
-| Service | Purpose | Status |
-|---------|---------|--------|
-| Google Gemini 2.5 Flash | Ideas/chat LLM | Active (IP restriction: allow VM IPs) |
-| Azure OpenAI GPT-5.3 | Planning + code gen | Active (deployment: gpt-5.3-chat) |
-| Azure OpenAI Grok 4.1 Fast | Default chat model | Active |
-| Groq Llama 3.3 70B | Fallback model | Active |
-| OpenCode (free tier) | Code generation in builder | Active |
-| Telegram Bot (Atlas) | Main Founder OS interface | Active |
-| Telegram Bot 2 | n8n workflow bot | Active |
-| Google Sheets | Ideas storage | Active |
-| PostgreSQL | Chat memory (legacy) | Active |
-| Qdrant + Mem0 | Vector memory | Active (GCP port 8000) |
-| GitHub (AyushPoo) | Code + Obsidian sync | Active |
+| Surface | Hosting | Purpose |
+|---------|---------|---------|
+| `foundersystems.in` | Vercel | Main Founder Systems marketing/account/product surface |
+| `promptdeck.foundersystems.in` | Vercel | PromptDeck frontend |
 
-### PM2 Processes
-**GCP:**
-| Name | Status | Restarts | Notes |
-|------|--------|----------|-------|
-| n8n (id:0) | online | 2 | Stable |
-| memory-server (id:5) | online | 62 | Needs investigation |
-| custom-memory (id:9) | online | 0 | Stable |
+## Live AWS services
 
-**Azure:**
-| Name | Status | Restarts | Notes |
-|------|--------|----------|-------|
-| founder-agent (id:0) | online | 51 | Fixed 2026-03-23 — was crashing due to bad tool schema + wrong max_tokens param |
+| Service | Runtime | Status | Notes |
+|---------|---------|--------|-------|
+| `founder-systems-api.service` | systemd | Live | Shared auth, entitlements, payments |
+| `promptdeck-api.service` | systemd | Live | PromptDeck backend / finisher |
+| `promptdeck-legacy.service` | systemd | Live | Legacy PromptDeck routes still required |
+| `promptdeck-design-engine.service` | systemd + Docker | Live | Open Design daemon |
+| `nginx.service` | systemd | Live | Public edge / TLS |
+| `postgresql@18-main.service` | systemd | Live | Local production DB on AWS |
+| `n8n` | PM2 | Live | Automation control plane |
+| `litellm-proxy` | PM2 | Live | LLM gateway on AWS |
+| `openclaw-gateway` | direct process | Live | Public `openclaw` surface |
+| `paperclip` | PM2 | Live | Public `paperclip` surface |
 
-## Data Flow
-```
-Telegram (Ayush)
-      |
-      v
-  Atlas v3 (Azure)
-  - GPT-5.3 / Grok / Llama
-  - 20 tools
-      |
-      +---> ssh_gcp / ssh_azure  -->  VM commands
-      +---> n8n_*               -->  Workflow control
-      +---> mem0_search/store   -->  Qdrant memory (GCP:8000)
-      +---> obsidian_write      -->  GitHub vault (via n8n webhook)
-      +---> web_search/fetch    -->  Internet
-      |
-      v
-  n8n (GCP) — 13 workflows
-      |
-      +---> Ideas Fetcher       -->  Google Sheets
-      +---> Product Builder     -->  GPT-5.3 plans
-      +---> Obsidian Updater    -->  GitHub vault
-      +---> System State Sync   -->  Hourly vault refresh
-```
+## Docker workloads
 
-## Known Issues (as of 2026-03-23)
-| # | Issue | Status |
-|---|-------|--------|
-| 1 | Atlas crashes on GPT-5.3 calls | FIXED — bad schema + max_tokens param |
-| 2 | memory-server 62 restarts | Open — needs log investigation |
-| 3 | Builder - Web App workflow | Inactive — builds done via OpenCode directly |
-| 4 | Product data hardcoded in JSX on foundersystems.in | Open — no CMS yet |
-| 5 | Port 3000 exposed to internet (bots scanning) | Low priority |
+| Container | Purpose | Port |
+|-----------|---------|------|
+| `promptdeck-design-engine` | Open Design daemon | `127.0.0.1:7456` |
+| `qdrant` | Vector store | `0.0.0.0:6333` |
 
-## Related
-- [[VM Status]]
-- [[Workflow Index]]
-- [[Skill Registry]]
+## LLM architecture
+
+- PromptDeck is no longer on Azure OpenAI for active traffic.
+- Active PromptDeck model traffic goes through LiteLLM on AWS.
+- LiteLLM is backed by Amazon Bedrock.
+- Cheaper Bedrock models are used for most routine traffic to control cost.
+- Claude is not the current default live model path.
+
+## Legacy infrastructure
+
+| Legacy surface | Current role |
+|----------------|-------------|
+| Azure VM `20.193.252.82` | Rollback / legacy only, not in active production path |
+| Old GCP `nip.io` docs | Historical only, no longer source of truth |
+
+## Repos that matter
+
+| Repo | Role |
+|------|------|
+| `AyushPoo/Founder-Systems` | Founder Systems frontend + shared product/account surface |
+| `promptdeck` | PromptDeck codebase |
+| `FounderOS-Memory` | This vault |

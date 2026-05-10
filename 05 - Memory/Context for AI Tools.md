@@ -1,94 +1,46 @@
-# 🧠 Context for AI Tools
+# Context for AI Tools
 
-> Copy-paste this into any new AI tool (ChatGPT, Claude, BrowserOS, Arena AI etc.) to give it instant context about Founder Systems.
+Use this when bootstrapping a new AI session on Founder Systems.
 
----
+Last refreshed: `2026-05-10`
 
-## Master Context Block
+## Master context block
 
-```
-You are helping Ayush Poojary build "Founder Systems" — an autonomous AI product factory based in Bengaluru, India.
+```text
+You are helping Ayush Poojary operate Founder Systems.
 
-## What Founder Systems Is
-An automated pipeline that:
-1. Scrapes startup ideas from the internet (Product Hunt, HN, Indie Hackers, Reddit, GitHub Trending)
-2. Ranks ideas using AI (Gemini)
-3. Plans products using GPT 5.3 (Azure OpenAI)
-4. Builds products (Next.js web apps, Excel templates, extensions, scripts)
-5. Publishes to website via GitHub + Antigravity IDE
-6. (Future) Markets and analyzes performance
+Founder Systems current live stack:
+- foundersystems.in on Vercel
+- promptdeck.foundersystems.in on Vercel
+- api.foundersystems.in on AWS
+- promptdeck-api.foundersystems.in on AWS
+- n8n.foundersystems.in on AWS
+- openclaw.foundersystems.in on AWS
+- paperclip.foundersystems.in on AWS
 
-## Infrastructure
-- GCP VM at 34.47.167.251, running n8n via PM2
-- n8n URL: https://34.47.167.251.nip.io
-- LLMs: Google Gemini (ideas), GPT 5.3 Azure (planning + code gen)
-- Telegram bot as main control interface
-- Google Sheets as ideas storage
-- PostgreSQL for chat memory
-- GitHub (AyushPoo account) for code
-- Antigravity IDE for website deployment (local, not connected to n8n yet)
-- Obsidian vault (this) as central memory layer
+Primary backend host:
+- AWS EC2 public IP: 52.87.13.200
+- The old Azure VM 20.193.252.82 is legacy/rollback only unless explicitly stated otherwise.
 
-## Key n8n Workflows
-- Founder OS Agent (New, ID: yXPkDYoKc4H2aLiB): ❌ Archived
-- Founder OS Agent (Old, ID: TzpURLXbI6iOfLqU): ✅ Active (Conflicting with new agent)
-- Ideas Fetcher (ID: pkTIpthafQ88wkAy): ✅ Active
-- Get Idea Details (ID: zgJBIZS3qUxEwwtd): ✅ Active
-- Save Idea (ID: rW7ohKD1BCAWUDtl): ✅ Active (⚠️ Google Sheets auth broken)
-- Product Builder (ID: vo7WHaL6rq7yKRvm): ✅ Active
-- Builder - Web App (ID: xiYFZhlToYLX9g4J): ❌ Inactive
+Current important runtime facts:
+- Founder Systems shared API is on AWS.
+- PromptDeck backend is on AWS.
+- PromptDeck still has a legacy backend service on port 8090 for some routes.
+- PromptDeck uses Open Design on AWS.
+- Active PromptDeck LLM traffic is off Azure OpenAI and goes through LiteLLM to Amazon Bedrock.
+- n8n is running on AWS and the live workflow inventory should be read from the vault's Workflow Index.
 
-## VM Structure
-/home/ayushpoojary1/
-├── .n8n/                     # n8n SQLite DB
-├── founder-os/
-│   ├── skill-repos/          # Cloned GitHub repos
-│   ├── skills/               # 108 skill folders from everything-claude-code
-│   └── context/
-│       └── skill-registry.json  # Maps product types to skills
+Key repos:
+- AyushPoo/Founder-Systems
+- promptdeck
+- FounderOS-Memory
 
-## Active Issues (as of 2026-03-25)
-1. New Founder OS Agent (yXPkDYoKc4H2aLiB) is archived and cannot be activated via API. Requires manual unarchive/activation.
-2. Old Founder OS Agent (TzpURLXbI6iOfLqU) is still active, creating a conflict.
-3. Save Idea workflow (rW7ohKD1BCAWUDtl) still has "Google Sheets auth broken" issue.
-4. Atlas API (on Azure VM) has 15 restarts in 24 hours.
-5. No proper deployment pipeline from code generation to live website.
-6. Antigravity not connected to n8n.
-
-## Ayush's Style
-- Non-technical founder — explain things simply
-- Prefers automation over manual work
-- Uses Telegram as his main interface
-- Wants the system to learn and improve over time
-- Building Founder Systems as the product (tools/templates for founders)
+Current operating priority:
+- stabilize PromptDeck UX and source-grounding after the AWS migration
+- clean old Azure/GCP secrets, envs, and temporary workflows
+- keep this memory repo aligned with the real production state
 ```
 
----
+## Rule
 
-## Tool-Specific Contexts
-
-### For Antigravity (Google IDE)
-```
-Project: Founder Systems website
-GitHub: AyushPoo/Founder-Systems
-Stack: (check current repo for tech stack)
-Goal: A marketplace for founder tools and templates, each product built by the AI pipeline
-Pipeline: n8n Product Builder → GPT 5.3 → code → GitHub push → auto-deploy
-```
-
-### For n8n AI Agent System Prompt Addition
-```
-Additional context: You have access to an Obsidian memory vault at GitHub repo AyushPoo/FounderOS-Memory. 
-This vault tracks all ideas, builds, learnings, and system state. 
-When something significant happens (idea saved, product built, error encountered), 
-you should update the vault via the update-obsidian webhook.
-```
-
-### For ChatGPT / Claude Sessions
-```
-Working on: Founder Systems autonomous product factory
-Current focus: [fill in current task]
-Last session: [fill in what was last worked on]
-Relevant files: See Obsidian vault AyushPoo/FounderOS-Memory on GitHub
-Don't repeat suggestions from previous sessions — check the vault for what's been decided.
-```
+If a new session finds older GCP/Azure notes, trust the refreshed May 10, 2026 vault pages first.

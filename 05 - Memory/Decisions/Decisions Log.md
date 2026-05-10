@@ -1,44 +1,26 @@
-# 📋 Decisions Log
+# Decisions Log
 
-Key architectural and product decisions. This prevents different AI tools from giving conflicting advice about things already decided.
+Last refreshed: `2026-05-10`
 
-## Format
-**Date | Decision | Reason | Decided By**
+## 2026-05-10
 
----
+### AWS is the primary production host
+- **Decision:** The live Founder Systems and PromptDeck backend stack now runs from AWS EC2.
+- **Reason:** Full migration completed and public backend traffic was cut over.
 
-## 2026-03-18
+### Azure is legacy, not primary
+- **Decision:** The old Azure VM is now rollback infrastructure only.
+- **Reason:** Active backend dependencies were migrated away from it.
 
-### Memory Layer = Obsidian + GitHub sync
-- **Decision:** Use Obsidian synced to GitHub as the central memory layer
-- **Reason:** Works across all AI tools, auto-syncs, can be read/written by n8n via GitHub API
-- **Decided by:** Ayush
+### PromptDeck LLM path moved to Bedrock via LiteLLM
+- **Decision:** Active PromptDeck model traffic should route through LiteLLM on AWS to Amazon Bedrock.
+- **Reason:** Remove Azure OpenAI from the active path and centralize model control plus rate limiting.
 
-### LLM Split: Gemini for ideas, GPT 5.3 for building
-- **Decision:** Keep Gemini for idea ranking/chat (cheap, fast). Use GPT 5.3 Azure for planning and code generation (more capable)
-- **Reason:** Cost vs quality tradeoff
-- **Decided by:** Existing setup
+### This vault should describe current state, not migration archaeology
+- **Decision:** Remove or rewrite stale GCP/Azure-era notes instead of keeping contradictory “history” pages as if they were live docs.
+- **Reason:** A memory repo that lies is worse than no memory repo.
 
-### Antigravity = manual IDE, not n8n node
-- **Decision:** Antigravity is Ayush's IDE on his laptop. It connects to GitHub. n8n will push code to GitHub — Antigravity or Vercel will handle deployment
-- **Reason:** Antigravity doesn't have an API; GitHub is the integration point
-- **Decided by:** Ayush + agent (2026-03-18)
+## Still open
 
-### Product Builder triggers via webhook (not Telegram directly)
-- **Decision:** Product Builder is triggered by a webhook POST, not directly from Telegram
-- **Reason:** Allows decoupled triggering from multiple sources
-- **Decided by:** Existing setup
-
-### n8n runs on GCP VM, not Docker
-- **Decision:** n8n runs via PM2 on bare VM, not containerised
-- **Reason:** How it was initially set up
-- **Decided by:** Initial setup
-
-### Product types: web_app, excel, extension, script
-- **Decision:** These 4 product types are the initial classification
-- **Reason:** Covers the main use cases for Founder Systems products
-- **Decided by:** Existing setup (GPT 5.3 planner)
-
----
-
-_New decisions will be logged here automatically or manually as the system evolves._
+- Decide whether the legacy Founder OS Agent / atlas / memory sidecar stack remains strategic.
+- Decide when the Azure VM can be fully shut down.

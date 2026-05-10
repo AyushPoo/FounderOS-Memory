@@ -1,56 +1,35 @@
-# 🎯 Vision — Founder Systems
+# Vision
 
-## What Is This?
-An autonomous AI-powered product factory that:
-1. **Discovers** trending ideas from the internet
-2. **Plans** what to build using AI (GPT 5.3 planner)
-3. **Builds** the product (code, templates, tools)
-4. **Publishes** to the Founder Systems website
-5. **Markets** the product automatically
-6. **Analyzes** performance and feeds learnings back
+Founder Systems is no longer just an “idea factory” concept. It is now a live stack with:
 
-## Principles
-- Everything automated where possible
-- Minimize manual input — Ayush only approves/steers
-- Build reusable systems, not one-off solutions
-- Context persists across ALL tools (this Obsidian vault)
-- Focus on leverage, not effort
-- The system gets smarter over time
+1. a public Founder Systems surface for auth, payments, and product access,
+2. a live PromptDeck product with its own frontend and backend,
+3. an AWS automation and services host running APIs, `n8n`, Open Design, Qdrant, and sidecar tools,
+4. this repo as the human-readable operating memory for the whole system.
 
-## Current Reality vs Target
+## Operating principles
 
-### Now (as of 2026-03-23)
-```
-Ayush (Telegram) → n8n (@Rayquabot)
-  → Ideas Fetcher (scrapes PH/HN/Reddit/GH) ✅
-  → Get Idea Details ✅
-  → Save Idea → Google Sheets ⚠️ (auth broken)
-  → Product Builder → GPT-5.3 plan ✅ (Suggest Changes not wired)
-  → Builder - Web App ❌ BROKEN
-  → ❌ No other builders (extensions, Excel, PPT, Notion etc.)
-  → ❌ No deploy to website/Gumroad/LemonSqueezy
-  → ❌ No marketing posts
-  → ❌ No analytics
+- Keep one source of truth for current state.
+- Prefer live, verified infra facts over old architectural intent.
+- Separate “historical context” from “currently running production.”
+- Remove migration clutter once it has served its purpose.
+- Keep public surfaces stable while internal implementation evolves.
 
-Azure VM: Atlas v3 (@Blasikenbot) ✅ running (50+ restarts, needs fix)
-  → Can SSH both VMs, browse web, write files, talk to n8n, Obsidian
-  → Products folder: pomodoro-timer, startup-cost-calculator (NOT deployed)
-```
+## Current reality
 
-### Target
-```
-Auto-scrape → Plan → Build → Publish → Market → Analyze → Learn
-     ↑                                                    |
-     └────────────── feedback loop ───────────────────────┘
-```
+The most important current business/runtime surfaces are:
 
-## Owner
-- **Name:** Ayush Poojary
-- **Email:** ayushpoojary1@gmail.com
-- **Location:** Bengaluru, India
-- **Tools:** Antigravity IDE, ChatGPT, Claude, BrowserOS, Arena AI
+- `foundersystems.in`
+- `promptdeck.foundersystems.in`
+- `api.foundersystems.in`
+- `promptdeck-api.foundersystems.in`
+- `n8n.foundersystems.in`
+- `openclaw.foundersystems.in`
+- `paperclip.foundersystems.in`
 
-## Infrastructure IPs (updated 2026-03-24)
-- GCP VM: **34.47.167.251** (updated after VM restart — old IP was 34.14.219.64)
-- Azure VM: 20.193.252.82
-- n8n URL: https://34.47.167.251.nip.io
+The current Founder Systems operating problem is not “how do we invent the architecture?” It is:
+
+- keep the AWS stack stable,
+- finish removing old infra residue,
+- improve PromptDeck quality and UX,
+- keep `n8n` and app workflows aligned with the real production stack.

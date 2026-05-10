@@ -1,49 +1,25 @@
-# 💡 Idea Pipeline
+# Idea Pipeline
 
-## How Ideas Flow
+Last refreshed: `2026-05-10`
 
-```
-Scrape (9 sources)
-    ↓
-Rank with Gemini (top 7)
-    ↓
-Store in Google Sheets "Sheet1"
-    ↓
-Ayush reviews via Telegram
-    ↓
-"save X" → Saved Ideas tab ← (⚠️ loses score/details)
-    ↓
-(TODO) → Product Builder → Plan → Build → Publish
-```
+## Current state
 
-## Current Storage
-- **Live batch:** Google Sheets "Sheet1" (cleared every new fetch)
-- **Saved ideas:** Google Sheets "Saved Ideas" tab
-- **Sheet ID:** 1-K6e8o2SprYeoBFOAnNdOG-JEGaqPW7uT7Qu3J4YTtk
+The idea pipeline still exists conceptually, but it is not the center of the current operating stack.
 
-## Idea Scoring Criteria
-Gemini scores each idea on:
-- **Feasibility** (1-10): Can a non-technical founder build this with no-code/Google tools?
-- **Revenue Potential** (1-10): How much money can this make?
-- **Ease of Building** (1-10): How simple is it to build?
-- **Total Score:** Average of the three
+What is verified:
 
-## Target Product Types
-Prioritized by the system:
-1. Excel / Google Sheets templates
-2. Notion templates
-3. Google Sheets tools / dashboards
-4. Simple micro-SaaS
-5. Web apps (Next.js)
-6. Browser extensions
-7. Scripts
+- `Ideas Fetcher` is active in `n8n`
+- `Get Idea Details` is active
+- `Save Idea` is active
+- the old `Product Builder` workflow is inactive
+- the active builder family now lives across specialized `Builder - *` workflows
 
-## Ideas Log
-_Ideas will be automatically logged here by n8n when the memory sync is set up._
+## Current interpretation
 
-| Date | Idea Name | Score | Status | Notes |
-|------|-----------|-------|--------|-------|
-| — | — | — | — | — |
+Founder Systems has moved from a pure “idea factory” framing toward maintaining:
 
-## Saved Ideas
-See [[Saved Ideas]] for bookmarked ideas.
+- the live Founder Systems website/account stack
+- PromptDeck as a live product
+- publishing and automation infrastructure on AWS
+
+That means the idea pipeline is now just one subsystem, not the whole company architecture.

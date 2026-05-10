@@ -1,32 +1,29 @@
 # Known Issues
 
-> Last updated: 2026-03-23 by co-founder agent
+Last refreshed: `2026-05-10`
 
-## Open Issues
+## Open issues
 
 | # | Issue | Severity | Notes |
 |---|-------|----------|-------|
-| 1 | memory-server (GCP) — 62 restarts | Medium | Still running but unstable. Needs log investigation. |
-| 2 | Product data hardcoded in JSX on foundersystems.in | Medium | No CMS. Every new product requires a code deploy. |
-| 3 | Port 3000 exposed to internet on Azure | Low | Python HTTP server scanned by bots. Not a crash risk. |
-| 4 | Product Builder workflow not connected to Atlas | Medium | Triggered via webhook only, not from Telegram/Atlas yet. |
-| 5 | No deployment pipeline from Azure products/ to live website | High | Products built but served on raw port — not on foundersystems.in |
+| 1 | PromptDeck first-turn chat, attachment, and source-grounding UX is still under active QA | High | Multiple fixes were deployed on `2026-05-10`, but end-user validation is still in progress |
+| 2 | PromptDeck still depends on the legacy `8090` service for `/upload` and `/chat` | High | Backend is split between `8011` and `8090` |
+| 3 | Several active `_tmp_*` workflows are still enabled in `n8n` | Medium | These should be archived or disabled before they create confusion |
+| 4 | PM2 processes still carry old Azure/GCP-era env variables and webhook references | High | Secrets rotation and env cleanup are still pending |
+| 5 | `founder-agent` is online but has a very large historical restart count | Medium | Treat it as not fully trusted until audited |
+| 6 | Azure VM still exists as a rollback box | Low | Remove only after rollback confidence and key rotation |
 
-## Fixed Issues
+## Recently fixed
 
-| Date | Issue | Fix |
-|------|-------|-----|
-| 2026-03-23 | Atlas crashes 50+ times — bad n8n_create_workflow tool schema | Fixed: added items:{type:object} to nodes array |
-| 2026-03-23 | Atlas crashes on GPT-5.3 calls — max_tokens not supported | Fixed: flagged gpt53 as is_reasoning to use max_completion_tokens |
-| 2026-03-23 | Obsidian vault stale — not updating | Fixed: was caused by Atlas crashes above. Webhook confirmed working. |
-| 2026-03-21 | GCP disk 100% full | Fixed: cleaned up duplicate skill repos |
-| 2026-03-20 | n8n API edits corrupted workflow state | Fixed: avoid editing 200+ node workflows via API |
-| 2026-03-21 | Gemini API key blocked by IP restriction | Fixed: whitelisted VM IPs |
+| Date | Fix |
+|------|-----|
+| `2026-05-10` | Full public backend cutover from Azure VM to AWS EC2 |
+| `2026-05-10` | Active PromptDeck and related workflow traffic moved off Azure OpenAI to Bedrock via LiteLLM |
+| `2026-05-10` | Active `n8n` Azure SSH usage was migrated to AWS |
+| `2026-05-10` | PromptDeck attachment routing no longer silently falls back to prompt-only generation in the known fixed branches |
 
-## Tech Gotchas (permanent notes)
-- Gemini API key has IP restriction — must allowlist both IPv4 and IPv6 of VMs
-- n8n `specifyBody: json` with expressions in `jsonBody` fails validation — use Code node to pre-serialize
-- n8n `webhook-test/` URLs only work in test mode — use `webhook/` for production
-- Azure VM only has 1.9GB RAM — avoid restarting multiple PM2 services simultaneously
-- GPT-5.3 uses `max_completion_tokens` not `max_tokens`
-- Product data on foundersystems.in is hardcoded in JSX — no CMS or API yet
+## Permanent operational notes
+
+- The root path of `api.foundersystems.in` and `promptdeck-api.foundersystems.in` returning `404` is not, by itself, an outage. Use `/health` to verify those services.
+- Do not trust old `nip.io`, GCP, or Azure notes unless they are explicitly marked historical.
+- This vault should be updated after infra migrations, workflow changes, routing changes, and pricing/auth changes.

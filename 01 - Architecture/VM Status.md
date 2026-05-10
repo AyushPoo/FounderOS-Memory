@@ -1,49 +1,56 @@
 # VM Status
 
-> Last updated: 2026-03-23 by co-founder agent
+Last refreshed: `2026-05-10`
 
-## GCP VM — 34.14.219.64
-
-| Field | Value |
-|-------|-------|
-| Status | Online |
-| OS | Debian Linux |
-| Disk | 30GB / 22GB used / 6.3GB free (78%) |
-| Node.js | v22.22.1 |
-| n8n | Running — https://34.14.219.64.nip.io |
-| n8n uptime | 21h+ (2 total restarts — stable) |
-| memory-server | Running (port 8000) — 62 restarts (investigate) |
-| custom-memory | Running — stable (0 restarts) |
-
-### Disk Breakdown
-```
-founder-os/skills/      484MB   (108 skill folders)
-founder-os/skill-repos/  42MB   (cloned repos)
-founder-os/builder/      8.6MB
-founder-os/knowledge/    20KB
-founder-os/context/      8KB
-.n8n/                   (SQLite DB + executions)
-```
-
-## Azure VM — 20.193.252.82
+## Primary production host: AWS EC2
 
 | Field | Value |
 |-------|-------|
-| Status | Online |
-| OS | Ubuntu Linux |
-| Disk | 29GB / 4GB used / 25GB free (15%) |
-| RAM | 1.9GB (be careful with concurrent processes) |
-| Atlas v3 | Running — 51 restarts (bugs fixed 2026-03-23) |
-| HTTP server | python3 -m http.server 3000 (serves products/) |
+| Public IP | `52.87.13.200` |
+| Internal hostname | `ip-172-31-29-50` |
+| OS | Ubuntu on AWS, kernel `7.0.0-1004-aws` |
+| Edge | nginx on `80/443` |
+| Database | Postgres `18-main` on `127.0.0.1:5432` |
+| PromptDeck API | `127.0.0.1:8011` |
+| PromptDeck legacy API | `127.0.0.1:8090` |
+| Founder Systems shared API | `127.0.0.1:8010` |
+| Open Design | `127.0.0.1:7456` |
+| Qdrant | `:6333` |
+| `openclaw` | `:7890` |
+| `paperclip` | `127.0.0.1:3100` |
+| `n8n` | `:5678` |
 
-### Products Shipped
-| Product | Path | Status |
-|---------|------|--------|
-| Pomodoro Timer | products/pomodoro-timer/index.html | Shipped |
-| Startup Cost Calculator | products/startup-cost-calculator/index.html | Shipped |
+## Systemd services verified running
 
-## History
-- 2026-03-19: GCP disk was 100% full — cleaned up
-- 2026-03-21: Mem0 v4 deployed with API key auth
-- 2026-03-22: Atlas v3 built on Azure — multi-model, SSH tools, 20 capabilities
-- 2026-03-23: Fixed Atlas crash bugs (bad tool schema + max_tokens param)
+- `founder-systems-api.service`
+- `promptdeck-api.service`
+- `promptdeck-legacy.service`
+- `nginx.service`
+- `postgresql@18-main.service`
+
+## PM2 services verified running
+
+- `atlas-api`
+- `founder-agent`
+- `memory-api`
+- `analytics-api`
+- `litellm-proxy`
+- `n8n`
+- `paperclip`
+
+## Docker containers verified running
+
+- `promptdeck-design-engine`
+- `qdrant`
+
+## Legacy host: Azure VM
+
+| Field | Value |
+|-------|-------|
+| Public IP | `20.193.252.82` |
+| Current role | Legacy / rollback only |
+| Active production dependency | None verified after AWS cutover |
+
+## Important note
+
+The Azure VM still matters operationally only until the team explicitly decides rollback is no longer needed. It should not be treated as the active primary host anymore.

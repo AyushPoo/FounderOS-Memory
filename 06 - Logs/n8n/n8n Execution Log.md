@@ -1,38 +1,16 @@
-# 📊 n8n Execution Log
+# n8n Execution Log
 
-Auto-updated by n8n when workflows run (once memory sync is active).
+Last refreshed: `2026-05-10`
 
-## Format
-```
-| Timestamp | Workflow | Status | Input Summary | Output Summary | Notes |
-```
+This page is no longer pretending to be a precise run log.
 
----
+## Current operational summary
 
-## Recent Executions
-| 2026-03-23 12:28 | Ideas Fetcher | ✅ Success | Fetched & ranked ideas batch |
-| 2026-03-23 10:49 | Product Builder | ⚠️ No Match | Idea routed to Telegram |
-| 2026-03-21 11:46 | Product Builder | ⚠️ No Match | Idea routed to Telegram |
-| 2026-03-21 11:37 | Product Builder | ⚠️ No Match | Idea routed to Telegram |
-| 2026-03-21 11:30 | Product Builder | ⚠️ No Match | Idea routed to Telegram |
-| 2026-03-19 13:30 | Obsidian Updater | ✅ Live | Workflow activated and tested |
-| 2026-03-18 13:11 | Obsidian Updater | ✅ Test | First auto-update from n8n webhook |
-| 2026-03-19 13:10 | System | ✅ Connected | All 3 workflows now report to Obsidian |
+- `n8n` is live on AWS and reachable at `https://n8n.foundersystems.in`
+- the workflow inventory in [[Workflow Index]] was refreshed directly from the live database
+- production and temporary workflows are currently mixed together
 
-_This file will be auto-populated once the Obsidian update webhook is connected to n8n workflows._
+## What to trust
 
-| Timestamp | Workflow | Status | Notes |
-|-----------|----------|--------|-------|
-| — | — | — | — |
-
----
-
-## Workflow Health Summary
-
-| Workflow | Last Run | Success Rate | Common Errors |
-|----------|----------|-------------|---------------|
-| Founder OS Agent | — | — | — |
-| Ideas Fetcher | — | — | — |
-| Product Builder | — | — | — |
-| Builder - Web App | Never (inactive) | — | Broken config |
-| 2026-03-21 06:20 | Mem0 Sync Test | ✅ Success | Testing instant Mem0 sync from Obsidian Updater |
+- Trust [[Workflow Index]] for the latest active/inactive list
+- do not trust old GCP `nip.io` automation notes as current execution truth
