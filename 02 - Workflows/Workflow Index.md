@@ -1,8 +1,8 @@
 # Workflow Index
 
-> Last synced: 2026-05-11 06:00 UTC (auto)
+> Last synced: 2026-05-11 07:00 UTC (auto)
 
-## Active (29)
+## Active (30)
 - **Builder - Excel** `2fRABiuMQl9u2Yl1` - updated 2026-05-10
 - **_tmp_step7_deploy** `32HTEjGknbNMBTnK` - updated 2026-05-10
 - **Github Sync** `3HdXFHlJ6CI1iiPj` - updated 2026-04-05
@@ -18,6 +18,7 @@
 - **Post Generator - Marketing** `IlEp1rBngL7o5EZi` - updated 2026-04-06
 - **_tmp_api_path** `L8WFtqHk0rmmRLuK` - updated 2026-05-10
 - **Analytics Weekly Summary** `NcdjFfhrCKhk6X5r` - updated 2026-04-03
+- **Paperclip CMO → Telegram Approval** `PcMktTgBridge1` - updated 2026-05-11
 - **_tmp_pm2list** `SGdl4YHTJnn3fIe3` - updated 2026-05-10
 - **Founder OS Agent** `TzpURLXbI6iOfLqU` - updated 2026-05-02
 - **_tmp_ssh_exec** `VprHDMh4lV4wm2UT` - updated 2026-05-10
