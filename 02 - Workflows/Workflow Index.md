@@ -1,6 +1,6 @@
 # Workflow Index
 
-> Last synced: 2026-05-12 07:00 UTC (auto)
+> Last synced: 2026-05-12 08:00 UTC (auto)
 
 ## Active (31)
 - **Builder - Excel** `2fRABiuMQl9u2Yl1` - updated 2026-05-10
@@ -21,7 +21,7 @@
 - **Paperclip CMO → Telegram Approval** `PcMktTgBridge1` - updated 2026-05-11
 - **Paperclip SecurityGuardian → Telegram Alert** `PcSecTgBridge1` - updated 2026-05-11
 - **_tmp_pm2list** `SGdl4YHTJnn3fIe3` - updated 2026-05-10
-- **Founder OS Agent** `TzpURLXbI6iOfLqU` - updated 2026-05-02
+- **Founder OS Agent** `TzpURLXbI6iOfLqU` - updated 2026-05-12
 - **_tmp_ssh_exec** `VprHDMh4lV4wm2UT` - updated 2026-05-10
 - **Obsidian Updater** `Yg8BWmxKQuCHkn2k` - updated 2026-05-01
 - **Product Publisher** `Z9UMfP6oE6weUe1q` - updated 2026-04-03
@@ -47,7 +47,7 @@
 - **Builder - Script** `SpoWroLQSB090flz` - updated 2026-05-10
 - **Build_workflow** `UenNZUVbklbHEyio` - updated 2026-04-05
 - **_tmp_read_atlas** `VXxA6yRzIipSvjhN` - updated 2026-05-10
-- **Marketing Agent (Phase 5)** `YfcZDpMpgDwpbDUZ` - updated 2026-05-01
+- **Marketing Agent (Phase 5)** `YfcZDpMpgDwpbDUZ` - updated 2026-05-12
 - **_tmp_azure_audit** `aYjPkuoNu9knyffm` - updated 2026-05-10
 - **_tmp_gcp_audit** `jdlDMAvKQDXSCrUU` - updated 2026-04-04
 - **_tmp_pm2_restart** `ntYdR13QtuTuX5g6` - updated 2026-04-04
