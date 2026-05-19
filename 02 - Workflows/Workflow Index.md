@@ -1,8 +1,8 @@
 # Workflow Index
 
-> Last synced: 2026-05-19 08:00 UTC (auto)
+> Last synced: 2026-05-19 10:00 UTC (auto)
 
-## Active (32)
+## Active (34)
 - **Builder - Excel** `2fRABiuMQl9u2Yl1` - updated 2026-05-10
 - **_tmp_step7_deploy** `32HTEjGknbNMBTnK` - updated 2026-05-10
 - **Github Sync** `3HdXFHlJ6CI1iiPj` - updated 2026-04-05
@@ -14,8 +14,10 @@
 - **GitHub Publisher** `A85rm1XmCAWhhZkl` - updated 2026-05-10
 - **Mem0 memories** `BkmdYttcq5lNsyfN` - updated 2026-03-20
 - **Founder Systems CMO Drafts** `FsCmoScheduled01` - updated 2026-05-19
+- **Founder Systems Guide Scout** `FsGuideScout01` - updated 2026-05-19
 - **Telegram Merge Action Handler** `FsMergeActionBridge1` - updated 2026-05-16
 - **Paperclip Branch ? Telegram Merge Approval** `FsMergeApprovalBridge1` - updated 2026-05-16
+- **Founder Systems SEO Digest** `FsSeoDigest01` - updated 2026-05-19
 - **Founder Spec Generator API** `FsSpecGenApi001` - updated 2026-05-03
 - **_tmp_api_path** `L8WFtqHk0rmmRLuK` - updated 2026-05-10
 - **Analytics Weekly Summary** `NcdjFfhrCKhk6X5r` - updated 2026-04-03
