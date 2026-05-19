@@ -1,8 +1,8 @@
 # Workflow Index
 
-> Last synced: 2026-05-19 06:00 UTC (auto)
+> Last synced: 2026-05-19 07:00 UTC (auto)
 
-## Active (34)
+## Active (32)
 - **Builder - Excel** `2fRABiuMQl9u2Yl1` - updated 2026-05-10
 - **_tmp_step7_deploy** `32HTEjGknbNMBTnK` - updated 2026-05-10
 - **Github Sync** `3HdXFHlJ6CI1iiPj` - updated 2026-04-05
@@ -12,13 +12,11 @@
 - **Analytics Data Collector** `7uM628kfwUq8nD31` - updated 2026-05-02
 - **System State Sync** `9LHPPJK0lPoxIls1` - updated 2026-05-01
 - **GitHub Publisher** `A85rm1XmCAWhhZkl` - updated 2026-05-10
-- **Marketing Engine** `AdIIHzlm87ebMfp9` - updated 2026-04-05
 - **Mem0 memories** `BkmdYttcq5lNsyfN` - updated 2026-03-20
 - **Founder Systems CMO Drafts** `FsCmoScheduled01` - updated 2026-05-19
 - **Telegram Merge Action Handler** `FsMergeActionBridge1` - updated 2026-05-16
 - **Paperclip Branch ? Telegram Merge Approval** `FsMergeApprovalBridge1` - updated 2026-05-16
 - **Founder Spec Generator API** `FsSpecGenApi001` - updated 2026-05-03
-- **Post Generator - Marketing** `IlEp1rBngL7o5EZi` - updated 2026-04-06
 - **_tmp_api_path** `L8WFtqHk0rmmRLuK` - updated 2026-05-10
 - **Analytics Weekly Summary** `NcdjFfhrCKhk6X5r` - updated 2026-04-03
 - **Paperclip CMO → Telegram Approval** `PcMktTgBridge1` - updated 2026-05-13
@@ -38,13 +36,15 @@
 - **Save Idea** `rW7ohKD1BCAWUDtl` - updated 2026-04-05
 - **Get Idea Details** `zgJBIZS3qUxEwwtd` - updated 2026-05-01
 
-## Inactive (24)
+## Inactive (26)
 - **Builder - Chrome Extension** `2mUdmoDVzE0Ffw3u` - updated 2026-05-10
 - **Builder - Dashboard** `3tLxlEtCglMd0ZTE` - updated 2026-05-10
 - **_tmp_azure_audit3** `9MZ56GUnjnYqoiYK` - updated 2026-04-04
+- **Marketing Engine** `AdIIHzlm87ebMfp9` - updated 2026-05-19
 - **_tmp_azure_deep** `CEtbvFcMhNJHxcpJ` - updated 2026-04-04
 - **Builder - Landing Page** `DRG4H5PvSNqIpIZm` - updated 2026-05-10
 - **Setup Runner** `HXEYSJjmCFskP7CD` - updated 2026-04-01
+- **Post Generator - Marketing** `IlEp1rBngL7o5EZi` - updated 2026-05-19
 - **Marketing Actions** `KwSOa5llfq4LicY5` - updated 2026-05-01
 - **Builder - PDF** `QSfn0rF9OftFuWpq` - updated 2026-05-10
 - **Builder - Script** `SpoWroLQSB090flz` - updated 2026-05-10
