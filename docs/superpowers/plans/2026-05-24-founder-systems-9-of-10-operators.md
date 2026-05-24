@@ -145,7 +145,7 @@ Expected: all pass.
 - Test: `F:\Work\Website\founder-agents-runtime\bridge\tests\test_workflow_state.py`
 - Modify: `F:\Work\Website\founder-agents-runtime\bridge\app.py`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 ```python
 from bridge.workflow_state import WorkflowStore
@@ -170,7 +170,7 @@ def test_done_task_is_recallable_as_previous_artifact(tmp_path):
     assert store.last_done("finance-agent", "tg-1")["artifact"]["url"] == "https://sheet"
 ```
 
-- [ ] **Step 2: Implement state store**
+- [x] **Step 2: Implement state store**
 
 Persist per `product_slug:telegram_user_id`:
 
@@ -184,6 +184,8 @@ Persist per `product_slug:telegram_user_id`:
 ```
 
 - [ ] **Step 3: Wire into email, Sheets, Docs, and artifact actions**
+
+Progress checkpoint, 2026-05-24: Google Sheets artifacts now persist actual sheet rows/title/url in workflow state, and finance follow-up edits can create a revised statement from the previous artifact. Email/Docs full workflow-state wiring remains open.
 
 Store every prepared draft before send; keep previous artifact after completion; support edits like "add my number to previous mail".
 
