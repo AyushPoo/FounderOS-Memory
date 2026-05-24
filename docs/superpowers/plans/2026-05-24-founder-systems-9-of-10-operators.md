@@ -10,6 +10,10 @@
 
 ---
 
+## Progress Checkpoints
+
+- 2026-05-24: Added a Hermes-led `plan_act_observe_finalize` loop in the runtime bridge. Founder Systems still gates access, credits, connectors, and execution safety, but Hermes now gets first control inside each operator domain before legacy deterministic routers. The loop loads shared memory, previous workflow artifacts, allowed connector tools, asks Hermes for a structured plan, rejects low-quality sheet/doc payloads, requests a repair plan, executes the approved connector, observes the result, and asks Hermes for a concise Telegram final response. Telegram tests now cover Marketing, Finance, and Ops loop behavior.
+
 ## Success Definition
 
 The agents are "9/10" only when these are true:
