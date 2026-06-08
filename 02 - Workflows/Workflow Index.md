@@ -1,6 +1,6 @@
 # Workflow Index
 
-> Last synced: 2026-06-08 18:00 UTC (auto)
+> Last synced: 2026-06-08 19:00 UTC (auto)
 
 ## Active (34)
 - **Builder - Excel** `2fRABiuMQl9u2Yl1` - updated 2026-05-10
@@ -13,7 +13,7 @@
 - **System State Sync** `9LHPPJK0lPoxIls1` - updated 2026-05-01
 - **GitHub Publisher** `A85rm1XmCAWhhZkl` - updated 2026-05-10
 - **Mem0 memories** `BkmdYttcq5lNsyfN` - updated 2026-03-20
-- **Founder Systems CMO Drafts** `FsCmoScheduled01` - updated 2026-05-23
+- **Founder Systems CMO Drafts** `FsCmoScheduled01` - updated 2026-06-08
 - **Founder Systems Guide Scout** `FsGuideScout01` - updated 2026-05-22
 - **Telegram Merge Action Handler** `FsMergeActionBridge1` - updated 2026-05-16
 - **Paperclip Branch ? Telegram Merge Approval** `FsMergeApprovalBridge1` - updated 2026-05-16
