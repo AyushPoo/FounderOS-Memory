@@ -1,27 +1,10 @@
 # Error Log
 
-> Last synced: 2026-06-08 09:00 UTC (auto)
+> Last synced: 2026-06-08 10:00 UTC (auto)
 
 ## Last 24h Errors
-- **?? Health Monitor (5min)**: 18 error(s)
-- **Analytics Weekly Summary**: 1 error(s)
-- **🔒 Daily n8n Backup → GitHub**: 1 error(s)
+_No errors in last 24h_
 
 ## Recent Error Log
 | Time | Workflow | Status |
 |------|----------|--------|
-| 2026-06-08T09:00 | ?? Health Monitor (5min) | error |
-| 2026-06-08T08:59 | ?? Health Monitor (5min) | error |
-| 2026-06-08T08:00 | ?? Health Monitor (5min) | error |
-| 2026-06-08T07:59 | ?? Health Monitor (5min) | error |
-| 2026-06-08T07:30 | Analytics Weekly Summary | error |
-| 2026-06-08T07:00 | ?? Health Monitor (5min) | error |
-| 2026-06-08T06:59 | ?? Health Monitor (5min) | error |
-| 2026-06-08T06:00 | ?? Health Monitor (5min) | error |
-| 2026-06-08T05:59 | ?? Health Monitor (5min) | error |
-| 2026-06-08T05:00 | ?? Health Monitor (5min) | error |
-| 2026-06-08T04:59 | ?? Health Monitor (5min) | error |
-| 2026-06-08T04:00 | ?? Health Monitor (5min) | error |
-| 2026-06-08T03:59 | ?? Health Monitor (5min) | error |
-| 2026-06-08T03:00 | ?? Health Monitor (5min) | error |
-| 2026-06-08T02:59 | ?? Health Monitor (5min) | error |
