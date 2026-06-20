@@ -1,26 +1,10 @@
 # Error Log
 
-> Last synced: 2026-06-20 20:00 UTC (auto)
+> Last synced: 2026-06-20 21:00 UTC (auto)
 
 ## Last 24h Errors
-- **?? Health Monitor (5min)**: 14 error(s)
-- **Obsidian Updater**: 6 error(s)
+_No errors in last 24h_
 
 ## Recent Error Log
 | Time | Workflow | Status |
 |------|----------|--------|
-| 2026-06-20T20:00 | ?? Health Monitor (5min) | error |
-| 2026-06-20T19:59 | ?? Health Monitor (5min) | error |
-| 2026-06-20T19:00 | Obsidian Updater | error |
-| 2026-06-20T19:00 | ?? Health Monitor (5min) | error |
-| 2026-06-20T18:59 | ?? Health Monitor (5min) | error |
-| 2026-06-20T18:00 | Obsidian Updater | error |
-| 2026-06-20T18:00 | Obsidian Updater | error |
-| 2026-06-20T18:00 | ?? Health Monitor (5min) | error |
-| 2026-06-20T17:59 | ?? Health Monitor (5min) | error |
-| 2026-06-20T17:00 | Obsidian Updater | error |
-| 2026-06-20T17:00 | Obsidian Updater | error |
-| 2026-06-20T17:00 | ?? Health Monitor (5min) | error |
-| 2026-06-20T16:59 | ?? Health Monitor (5min) | error |
-| 2026-06-20T16:00 | Obsidian Updater | error |
-| 2026-06-20T16:00 | ?? Health Monitor (5min) | error |
